@@ -1,6 +1,6 @@
 # 03 – INF.04-01-25.01-SG "Kategorie zdjęć"
 
-Sheet: `arkusze/inf_04_2025_01_01_SG.pdf` · Key: `arkusze/klucze/inf_04_2025_01_01_SG_zo.pdf`
+Sheet: `5_ARKUSZE/inf_04_2025_01_01_SG.pdf` · Key: `5_ARKUSZE/klucze/inf_04_2025_01_01_SG_zo.pdf`
 Run: `npm run dev` → `?app=03_galeria_2025_01`.
 Exam: copy `App.jsx` + `App.css` to `src/`. Put the images `obraz1..12.jpg` from `pliki3.zip` (password **`K@tegorie)`**) in `public/assets/`.
 Folders that year: `konsolowa`, `webowa`, `dokumentacja`.

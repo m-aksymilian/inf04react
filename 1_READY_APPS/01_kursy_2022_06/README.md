@@ -1,6 +1,6 @@
 # 01 – INF.04-02-22.06-SG "Zapisy na kursy"
 
-Sheet: `arkusze/inf_04_2022_06_02_SG_kolor.pdf` · Key: `arkusze/klucze/INF_04_2022_06_02_SG_zo.xlsx`
+Sheet: `5_ARKUSZE/inf_04_2022_06_02_SG_kolor.pdf` · Key: `5_ARKUSZE/klucze/INF_04_2022_06_02_SG_zo.xlsx`
 Run: `npm run dev` → `?app=01_kursy_2022_06` · Exam: copy `App.jsx` to `src/App.jsx` (no CSS file needed).
 Folders that year: `konsola`, `web`, `testy` (screenshots + egzamin go to **testy**).
 

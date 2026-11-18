@@ -5,16 +5,16 @@ import userEvent from '@testing-library/user-event';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import Kursy from '../1_READY_APPS/01_kursy_2022_06/App.jsx';
-import Film from '../1_READY_APPS/02_film_2023_06/App.jsx';
-import Galeria from '../1_READY_APPS/03_galeria_2025_01/App.jsx';
-import Hasla from '../1_READY_APPS/04_menedzer_hasel_2026_06/App.jsx';
-import Rejestracja from '../1_READY_APPS/05_rejestracja_konta_PRACTICE/App.jsx';
-import Weterynarz from '../1_READY_APPS/06_wizyta_weterynarz_PRACTICE/App.jsx';
-import Przesylka from '../1_READY_APPS/07_nadaj_przesylke_PRACTICE/App.jsx';
-import Kosci from '../1_READY_APPS/08_gra_w_kosci_PRACTICE/App.jsx';
-import Quiz from '../1_READY_APPS/09_quiz_PRACTICE/App.jsx';
-import Notatki from '../1_READY_APPS/10_notatki_PRACTICE/App.jsx';
+import Kursy from '../../1_READY_APPS/01_kursy_2022_06/App.jsx';
+import Film from '../../1_READY_APPS/02_film_2023_06/App.jsx';
+import Galeria from '../../1_READY_APPS/03_galeria_2025_01/App.jsx';
+import Hasla from '../../1_READY_APPS/04_menedzer_hasel_2026_06/App.jsx';
+import Rejestracja from '../../1_READY_APPS/05_rejestracja_konta_PRACTICE/App.jsx';
+import Weterynarz from '../../1_READY_APPS/06_wizyta_weterynarz_PRACTICE/App.jsx';
+import Przesylka from '../../1_READY_APPS/07_nadaj_przesylke_PRACTICE/App.jsx';
+import Kosci from '../../1_READY_APPS/08_gra_w_kosci_PRACTICE/App.jsx';
+import Quiz from '../../1_READY_APPS/09_quiz_PRACTICE/App.jsx';
+import Notatki from '../../1_READY_APPS/10_notatki_PRACTICE/App.jsx';
 
 let log;
 beforeEach(() => {
@@ -23,7 +23,7 @@ beforeEach(() => {
 const logged = () => log.mock.calls.map((c) => c.join(' '));
 
 describe('static rules from every key (all App.jsx files)', () => {
-  const root = path.resolve(__dirname, '../1_READY_APPS');
+  const root = path.resolve(__dirname, '../../1_READY_APPS');
   for (const dir of fs.readdirSync(root).filter((d) => fs.existsSync(path.join(root, d, 'App.jsx')))) {
     const src = fs.readFileSync(path.join(root, dir, 'App.jsx'), 'utf8');
     it(`${dir}: no DOM methods, no class=/for=, bootstrap imported, one component`, () => {
@@ -75,7 +75,7 @@ describe('02 film 2023', () => {
     expect(logged()).toEqual(['tytul: Vinci; rodzaj: 1']);
   });
   it('body padding is in the CSS file', () => {
-    const css = fs.readFileSync(path.resolve(__dirname, '../1_READY_APPS/02_film_2023_06/App.css'), 'utf8');
+    const css = fs.readFileSync(path.resolve(__dirname, '../../1_READY_APPS/02_film_2023_06/App.css'), 'utf8');
     expect(css.replace(/\s/g, '')).toContain('body{padding:20px;}');
   });
 });

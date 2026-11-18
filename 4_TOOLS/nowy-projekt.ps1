@@ -1,6 +1,6 @@
 ﻿# Creates the exam folder structure and a ready React project (works OFFLINE).
-#   tools\nowy-projekt.bat 12345678901
-#   tools\nowy-projekt.bat 12345678901 -Web web -Konsola konsola -Dokumentacja testy -Cel D:\
+#   4_TOOLS\nowy-projekt.bat 12345678901
+#   4_TOOLS\nowy-projekt.bat 12345678901 -Web web -Konsola konsola -Dokumentacja testy -Cel D:\
 # Result (default names = 2025/2026 sheets; CHECK THE SHEET and pass the right ones):
 #   <Cel>\<numer>\konsolowa\
 #   <Cel>\<numer>\webowa\egzamin\   <- Vite + React + Bootstrap, node_modules already inside

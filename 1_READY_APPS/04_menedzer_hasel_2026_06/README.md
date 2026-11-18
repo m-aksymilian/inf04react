@@ -1,6 +1,6 @@
 # 04 – INF.04-01-26.06-SG "Menedżer haseł"
 
-Sheet: `arkusze/inf_04_2026_06_01_SG.pdf` · Key: `arkusze/klucze/INF_04_2026_06_01_SG_zo.pdf`
+Sheet: `5_ARKUSZE/inf_04_2026_06_01_SG.pdf` · Key: `5_ARKUSZE/klucze/INF_04_2026_06_01_SG_zo.pdf`
 Run: `npm run dev` → `?app=04_menedzer_hasel_2026_06`.
 Exam: copy `App.jsx` to `src/`; no CSS file. **Put your number in the h1.**
 Materials: `Web1.7z` (password **`*LoGiny&H@sla8`**) holds `szablon.html` (copy here: `szablon.txt`), which you convert to JSX.

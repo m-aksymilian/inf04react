@@ -1,6 +1,6 @@
 ﻿# Zips the React project WITHOUT node_modules and copies the modified source files next to the zip.
-#   tools\spakuj.bat C:\Users\...\Desktop\12345678901\webowa
-#   tools\spakuj.bat <web folder> -Zip web.zip -Projekt egzamin -UsunProjekt
+#   4_TOOLS\spakuj.bat C:\Users\...\Desktop\12345678901\webowa
+#   4_TOOLS\spakuj.bat <web folder> -Zip web.zip -Projekt egzamin -UsunProjekt
 # Result in <web folder>:
 #   web.zip   (the whole project folder, no node_modules / dist / .vite / .vscode; .git IS kept - some sheets require a repo)
 #   App.jsx, App.css, ... (every file from src\ + index.html that differs from the template)

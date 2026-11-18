@@ -1,6 +1,6 @@
 # 02 – INF.04-03-23.06-SG / INF.04-01-23.06-SD "Formularz filmu"
 
-Sheets: `arkusze/inf_04_2023_06_03_SG_kolor.pdf`, `arkusze/inf_04_2023_06_01_SD.pdf` · Key: `arkusze/klucze/INF_04_2023_06_03_SG_zo.xlsx`
+Sheets: `5_ARKUSZE/inf_04_2023_06_03_SG_kolor.pdf`, `5_ARKUSZE/inf_04_2023_06_01_SD.pdf` · Key: `5_ARKUSZE/klucze/INF_04_2023_06_03_SG_zo.xlsx`
 Run: `npm run dev` → `?app=02_film_2023_06` · Exam: copy `App.jsx` + `App.css` to `src/`.
 Folders that year: `konsola`, `web`, `dokumentacja`.
 

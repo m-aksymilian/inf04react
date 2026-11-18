@@ -1,15 +1,15 @@
 # INF.04 – React (web app) tasks: full requirements
 
 Every web task that has appeared in official INF.04 exams so far, taken from the CKE sheets and their official
-grading keys (`arkusze/klucze/`). Exact strings to type are in **"quotes"**; keep the Polish characters.
-Sheets: `arkusze/`. Keys: `arkusze/klucze/` (`_zo` = "zasady oceniania"). Materials: `arkusze/materialy/`.
+grading keys (`5_ARKUSZE/klucze/`). Exact strings to type are in **"quotes"**; keep the Polish characters.
+Sheets: `5_ARKUSZE/`. Keys: `5_ARKUSZE/klucze/` (`_zo` = "zasady oceniania"). Materials: `5_ARKUSZE/materialy/`.
 
 | # | Exam code | Task | Sheet | Key |
 |---|---|---|---|---|
-| 1 | INF.04-02-22.06-SG | Zapisy na kursy (form + list + console) | `arkusze/inf_04_2022_06_02_SG_kolor.pdf` | `arkusze/klucze/INF_04_2022_06_02_SG_zo.xlsx` |
-| 2 | INF.04-03-23.06-SG (and INF.04-01-23.06-SD, identical web part) | Formularz filmu (form + select + console) | `arkusze/inf_04_2023_06_03_SG_kolor.pdf`, `arkusze/inf_04_2023_06_01_SD.pdf` | `arkusze/klucze/INF_04_2023_06_03_SG_zo.xlsx` |
-| 3 | INF.04-01-25.01-SG | Kategorie zdjęć (gallery, switches, counters) | `arkusze/inf_04_2025_01_01_SG.pdf` | `arkusze/klucze/inf_04_2025_01_01_SG_zo.pdf` |
-| 4 | INF.04-01-26.06-SG | Menedżer haseł (form, checkbox→disabled, summary) | `arkusze/inf_04_2026_06_01_SG.pdf` | `arkusze/klucze/INF_04_2026_06_01_SG_zo.pdf` |
+| 1 | INF.04-02-22.06-SG | Zapisy na kursy (form + list + console) | `5_ARKUSZE/inf_04_2022_06_02_SG_kolor.pdf` | `5_ARKUSZE/klucze/INF_04_2022_06_02_SG_zo.xlsx` |
+| 2 | INF.04-03-23.06-SG (and INF.04-01-23.06-SD, identical web part) | Formularz filmu (form + select + console) | `5_ARKUSZE/inf_04_2023_06_03_SG_kolor.pdf`, `5_ARKUSZE/inf_04_2023_06_01_SD.pdf` | `5_ARKUSZE/klucze/INF_04_2023_06_03_SG_zo.xlsx` |
+| 3 | INF.04-01-25.01-SG | Kategorie zdjęć (gallery, switches, counters) | `5_ARKUSZE/inf_04_2025_01_01_SG.pdf` | `5_ARKUSZE/klucze/inf_04_2025_01_01_SG_zo.pdf` |
+| 4 | INF.04-01-26.06-SG | Menedżer haseł (form, checkbox→disabled, summary) | `5_ARKUSZE/inf_04_2026_06_01_SG.pdf` | `5_ARKUSZE/klucze/INF_04_2026_06_01_SG_zo.pdf` |
 
 The 2025-01 sheet was a 404 on praktycznyegzamin.pl. It was taken from the TEB Wrocław solutions repo
 (github.com/Technikum-TEB-Edukacja-we-Wroclawiu/INF.04-rozwiazania, `_arkusze/2025-01/`), along with all four keys.

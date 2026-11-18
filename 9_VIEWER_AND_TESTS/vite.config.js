@@ -5,4 +5,6 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: { entries: ['index.html'] },
+  // the apps and blocks live outside this folder (../1_READY_APPS, ../2_BUILDING_BLOCKS)
+  server: { fs: { allow: ['..'] } },
 });

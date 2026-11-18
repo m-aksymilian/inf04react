@@ -1,5 +1,5 @@
 node_modules/
 dist/
-tests/node_modules/
+9_VIEWER_AND_TESTS/tests/node_modules/
 .vite/
 *.log

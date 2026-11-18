@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --open",
-    "build": "vite build",
-    "test": "npm --prefix tests test"
+    "dev": "vite 9_VIEWER_AND_TESTS --open",
+    "build": "vite build 9_VIEWER_AND_TESTS",
+    "test": "npm --prefix 9_VIEWER_AND_TESTS/tests test"
   },
   "dependencies": {
     "bootstrap": "^5.3.9",

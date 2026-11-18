@@ -1,24 +1,37 @@
 # INF.04 React toolbox
 
-The React side of my INF.04 toolbox, built the same way as the C++ one (`Desktop\C--`). It is made for **sourcing code fast** while writing the web task, not for reading top to bottom.
+The web (React) part of my INF.04 toolbox (siblings: `C--` for the console part, `inf04-desktop` for C# WinForms). It is made for **finding a piece of code fast** while writing the exam task.
 
-| Folder | What | Use it when |
-|---|---|---|
-| `1_READY_APPS/` | 4 official web tasks solved (22.06, 23.06, 25.01, 26.06) + 6 practice apps; each has a `README.md` with the spec, key checks and screenshots | the task looks like one of them: copy `App.jsx` (+ `App.css`) |
-| `2_BUILDING_BLOCKS/` | 87 paste-ready blocks (`//@ ID \| what \| needs`); catalog in its `README.md` | you need one piece (select, switch, +1 in an array, filter…) |
-| `3_EXAM_TEMPLATE/egzamin/` | clean Vite 6 + React 19 + Bootstrap 5.3 project | starting the exam project (use `tools\nowy-projekt.bat`) |
-| `tools/` | `nowy-projekt`, `spakuj`, `gen-snippets.mjs` | setup / packing / regenerating snippets + catalog |
-| `arkusze/` | sheets, grading keys (`klucze/`), materials | checking exact wording |
-| `react-tasks.md` | full specs + key checks of all 4 web tasks, cross-year patterns | before the exam |
+## What do you need? → go here
+
+| I need… | Open |
+|---|---|
+| **a task like one from a past exam**, fully solved | [1_READY_APPS](1_READY_APPS/README.md): 4 official web tasks + 6 practice apps, one line each |
+| **one piece of code** (select, switch, +1 in an array, filter, timer…) | [2_BUILDING_BLOCKS](2_BUILDING_BLOCKS/README.md): 87 blocks, or the [task phrase → block](#task-phrase--block) table below |
+| to **see a block or an app running** + copy it with one click | `npm run dev` → the viewer; search by ID, English word or **Polish phrase** ("lista rozwijana", "suwak") |
+| to **start the exam** (folders + a ready React project, offline) | [4_TOOLS](4_TOOLS/README.md) → `nowy-projekt.bat <numer>` |
+| to **hand in** (web.zip without node_modules, sources outside) | [4_TOOLS](4_TOOLS/README.md) → `spakuj.bat <folder>` |
+| the **exact requirements / grading key** of a past task | [react-tasks.md](react-tasks.md) (text), [5_ARKUSZE](5_ARKUSZE/README.md) (PDFs, keys, materials) |
+| what the grader **always** checks, common mistakes | [Grader checklist](#grader-checklist-from-every-key) and [Pitfalls](#pitfalls) below |
+
+**Folders** (numbered in the order you use them):
+- `1_READY_APPS`: solved tasks.
+- `2_BUILDING_BLOCKS`: pieces of code.
+- `3_EXAM_TEMPLATE`: empty project; the tool copies it for you.
+- `4_TOOLS`: setup and packing scripts.
+- `5_ARKUSZE`: sheets and keys.
+- `9_VIEWER_AND_TESTS`: the viewer app and the toolbox's own tests; ignore at the exam.
+
+`package.json` and `node_modules` stay in the root because the viewer and `nowy-projekt` use them.
 
 ## Toolbox commands (in this folder)
 ```
 npm run dev      # viewer: run any ready app (?app=...), every block live with Copy logic / Copy JSX buttons,
                  # search by ID, English word or Polish task phrase ("lista rozwijana", "suwak"...)
-npm test         # 23 app tests (grading-key checks) + every block renders
-node tools/gen-snippets.mjs   # after editing blocks: rebuilds .vscode snippets + 2_BUILDING_BLOCKS/README.md
+npm test         # app tests (grading-key checks) + every block renders and compiles
+node 4_TOOLS/gen-snippets.mjs   # after editing blocks: rebuilds .vscode snippets + 2_BUILDING_BLOCKS/README.md
 ```
-On a new PC: run `npm install`, then `npm --prefix tests install --legacy-peer-deps` (the tests use React from the root).
+On a new PC: run `npm install`, then `npm --prefix 9_VIEWER_AND_TESTS/tests install --legacy-peer-deps` (the tests use React from the root).
 
 ---
 
@@ -26,7 +39,7 @@ On a new PC: run `npm install`, then `npm --prefix tests install --legacy-peer-d
 1. **Read the sheet** and write down: the folder names (`web` / `webowa`, `testy` / `dokumentacja`…), the exact texts, the classes, the password of the materials archive.
 2. **Create the folders + project** (offline, no `npm install`):
    ```
-   tools\nowy-projekt.bat <numer> -Web webowa -Konsola konsolowa -Dokumentacja dokumentacja
+   4_TOOLS\nowy-projekt.bat <numer> -Web webowa -Konsola konsolowa -Dokumentacja dokumentacja
    cd Desktop\<numer>\webowa\egzamin
    npm run dev            (blocked by PowerShell? -> npm.cmd run dev, or use cmd)
    code .                 (the snippets work only inside this opened folder)
@@ -41,7 +54,7 @@ On a new PC: run `npm install`, then `npm --prefix tests install --legacy-peer-d
    - Other snippets: `us` (useState, setter filled automatically), `fg` (form-group + label + input), `mapli`.
    - After pasting two blocks, check for duplicate names (two `zapisz`, two `id="tytul"`) and rename.
 5. **Check against the key** (list below), then take the **screenshots**.
-6. **Pack**: `tools\spakuj.bat Desktop\<numer>\webowa`. It creates `web.zip` without node_modules and copies the changed `App.jsx` / `App.css` next to it. Check that the zip opens. Then delete the project folder (or add `-UsunProjekt`), so only the zip + the source files remain.
+6. **Pack**: `4_TOOLS\spakuj.bat Desktop\<numer>\webowa`. It creates `web.zip` without node_modules and copies the changed `App.jsx` / `App.css` next to it. Check that the zip opens. Then delete the project folder (or add `-UsunProjekt`), so only the zip + the source files remain.
 7. **egzamin** document: OS, IDEs, languages, frameworks/libraries (React, Bootstrap). A skeleton is made in `dokumentacja\egzamin.txt`. 2022–2025 asked for an office document with signed screenshots; 2026 asked for a plain text file. **Follow the sheet.**
 
 ## Grader checklist (from every key)

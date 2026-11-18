@@ -1,4 +1,4 @@
-// Toolbox viewer (NOT exam code). `npm run dev` in the repo root opens it.
+// Toolbox viewer (NOT exam code). `npm run dev` in the repo root opens it (vite root = 9_VIEWER_AND_TESTS).
 //   /                 -> index: ready apps + searchable list of building blocks
 //   /?app=<folder>    -> runs one ready app exactly like in an exam project (only its own CSS loads)
 //   /?blocks=<file>   -> live demo + copyable code of every block in one 2_BUILDING_BLOCKS file
@@ -6,12 +6,12 @@ import { StrictMode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { parseBlocks } from './parseBlocks.js';
 
-const apps = import.meta.glob('../1_READY_APPS/*/App.jsx');
-const appSources = import.meta.glob('../1_READY_APPS/*/App.jsx', { query: '?raw', import: 'default', eager: true });
-const blockModules = import.meta.glob('../2_BUILDING_BLOCKS/*.jsx');
-const blockSources = import.meta.glob('../2_BUILDING_BLOCKS/*.jsx', { query: '?raw', import: 'default', eager: true });
+const apps = import.meta.glob('../../1_READY_APPS/*/App.jsx');
+const appSources = import.meta.glob('../../1_READY_APPS/*/App.jsx', { query: '?raw', import: 'default', eager: true });
+const blockModules = import.meta.glob('../../2_BUILDING_BLOCKS/*.jsx');
+const blockSources = import.meta.glob('../../2_BUILDING_BLOCKS/*.jsx', { query: '?raw', import: 'default', eager: true });
 
-import readme from '../README.md?raw';
+import readme from '../../README.md?raw';
 
 const folderOf = (path) => path.split('/').slice(-2, -1)[0];
 const fileOf = (path) => path.split('/').pop().replace('.jsx', '');
@@ -91,7 +91,7 @@ function CopyButton({ text, label = 'Copy' }) {
 }
 
 function BlocksPage({ file }) {
-  const path = `../2_BUILDING_BLOCKS/${file}.jsx`;
+  const path = `../../2_BUILDING_BLOCKS/${file}.jsx`;
   const [module, setModule] = useState(null);
   useEffect(() => {
     blockModules[path]?.().then(setModule);
@@ -140,7 +140,7 @@ function BlocksPage({ file }) {
 }
 
 function AppPage({ folder }) {
-  const path = `../1_READY_APPS/${folder}/App.jsx`;
+  const path = `../../1_READY_APPS/${folder}/App.jsx`;
   const [App, setApp] = useState(null);
   useEffect(() => {
     apps[path]?.().then((m) => setApp(() => m.default));

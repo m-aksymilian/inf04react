@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseBlocks } from '../viewer/parseBlocks.js';
 
-const dir = path.resolve(__dirname, '../2_BUILDING_BLOCKS');
+const dir = path.resolve(__dirname, '../../2_BUILDING_BLOCKS');
 const allBlocks = fs.readdirSync(dir).filter((f) => f.endsWith('.jsx')).sort()
   .flatMap((f) => parseBlocks(fs.readFileSync(path.join(dir, f), 'utf8')));
 
