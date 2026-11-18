@@ -1,0 +1,25 @@
+body {
+  background-color: #2e7cb8;
+  color: white;
+}
+
+.quiz {
+  text-align: center;
+  padding: 20px;
+}
+
+.quiz img {
+  max-width: 500px;
+  width: 100%;
+}
+
+.pytanie {
+  font-size: 1.6rem;
+  margin: 10px;
+}
+
+.odpowiedzi {
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 10px;
+}

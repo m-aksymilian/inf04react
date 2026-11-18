@@ -1,0 +1,28 @@
+/* Android ARGB #ED27C121 = alpha ED (0.93) + RGB 27C121 */
+body {
+  background-color: rgba(39, 193, 33, 0.93);
+}
+
+.gra {
+  text-align: center;
+  padding: 20px;
+}
+
+.kosc {
+  width: 100px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.niedostepna {
+  opacity: 0.5;
+}
+
+.przycisk {
+  margin: 10px;
+  background-color: rgba(39, 80, 33, 0.93);
+}
+
+.wynik {
+  font-size: 40px;
+}

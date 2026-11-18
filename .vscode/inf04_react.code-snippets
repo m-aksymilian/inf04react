@@ -1,0 +1,2645 @@
+{
+  "FORM-01 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form01",
+      "FORM-01"
+    ],
+    "description": "text input + label + form-group, console.log on submit – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-01 text input + label + form-group, console.log on submit",
+      "const [imie, setImie] = useState('');",
+      "",
+      "function zapisz(e) {",
+      "  e.preventDefault();          // stops the page reload (?imie=... in the URL)",
+      "  console.log(imie);",
+      "}"
+    ]
+  },
+  "FORM-01 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form01j"
+    ],
+    "description": "text input + label + form-group, console.log on submit – JSX (inside return)",
+    "body": [
+      "<form onSubmit={zapisz}>",
+      "  <div className=\"form-group mb-3\">",
+      "    <label htmlFor=\"imie\">Imię i nazwisko:</label>",
+      "    <input",
+      "      type=\"text\"",
+      "      className=\"form-control\"",
+      "      id=\"imie\"",
+      "      value={imie}",
+      "      onChange={(e) => setImie(e.target.value)}",
+      "    />",
+      "  </div>",
+      "  <button type=\"submit\" className=\"btn btn-primary\">Zapisz</button>",
+      "</form>"
+    ]
+  },
+  "FORM-02 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form02",
+      "FORM-02"
+    ],
+    "description": "number input -> Number(), check range, index into array (1-based) – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-02 number input -> Number(), check range, index into array (1-based)",
+      "const kursy = ['Programowanie w C#', 'Angular dla początkujących', 'Kurs Django'];",
+      "const [numer, setNumer] = useState('');",
+      "",
+      "function zapisz(e) {",
+      "  e.preventDefault();",
+      "  const n = Number(numer);     // input value is ALWAYS a string",
+      "  if (n >= 1 && n <= kursy.length) {",
+      "    console.log(kursy[n - 1]);",
+      "  } else {",
+      "    console.log('Nieprawidłowy numer kursu');",
+      "  }",
+      "}"
+    ]
+  },
+  "FORM-02 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form02j"
+    ],
+    "description": "number input -> Number(), check range, index into array (1-based) – JSX (inside return)",
+    "body": [
+      "<form onSubmit={zapisz}>",
+      "  <div className=\"form-group mb-3\">",
+      "    <label htmlFor=\"numer\">Numer kursu:</label>",
+      "    <input",
+      "      type=\"number\"",
+      "      className=\"form-control\"",
+      "      id=\"numer\"",
+      "      value={numer}",
+      "      onChange={(e) => setNumer(e.target.value)}",
+      "    />",
+      "  </div>",
+      "  <button type=\"submit\" className=\"btn btn-primary\">Zapisz do kursu</button>",
+      "</form>"
+    ]
+  },
+  "FORM-03 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form03",
+      "FORM-03"
+    ],
+    "description": "select with fixed options (first empty), logs option VALUE – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-03 select with fixed options (first empty), logs option VALUE",
+      "const [rodzaj, setRodzaj] = useState('');",
+      "",
+      "function dodaj(e) {",
+      "  e.preventDefault();",
+      "  console.log(`rodzaj: \\${rodzaj}`);",
+      "}"
+    ]
+  },
+  "FORM-03 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form03j"
+    ],
+    "description": "select with fixed options (first empty), logs option VALUE – JSX (inside return)",
+    "body": [
+      "<form onSubmit={dodaj}>",
+      "  <div className=\"form-group mb-3\">",
+      "    <label htmlFor=\"rodzaj\">Rodzaj</label>",
+      "    <select",
+      "      className=\"form-control form-select\"",
+      "      id=\"rodzaj\"",
+      "      value={rodzaj}",
+      "      onChange={(e) => setRodzaj(e.target.value)}",
+      "    >",
+      "      <option value=\"\"></option>",
+      "      <option value=\"1\">Komedia</option>",
+      "      <option value=\"2\">Obyczajowy</option>",
+      "      <option value=\"3\">Sensacyjny</option>",
+      "      <option value=\"4\">Horror</option>",
+      "    </select>",
+      "  </div>",
+      "  <button type=\"submit\" className=\"btn btn-primary\">Dodaj</button>",
+      "</form>"
+    ]
+  },
+  "FORM-04 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form04",
+      "FORM-04"
+    ],
+    "description": "select generated from an array with .map – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-04 select generated from an array with .map",
+      "const miasta = ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'];",
+      "const [miasto, setMiasto] = useState(miasta[0]);"
+    ]
+  },
+  "FORM-04 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form04j"
+    ],
+    "description": "select generated from an array with .map – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group mb-3\">",
+      "  <label htmlFor=\"miasto\">Miasto:</label>",
+      "  <select",
+      "    className=\"form-control form-select\"",
+      "    id=\"miasto\"",
+      "    value={miasto}",
+      "    onChange={(e) => setMiasto(e.target.value)}",
+      "  >",
+      "    {miasta.map((m) => (",
+      "      <option key={m} value={m}>{m}</option>",
+      "    ))}",
+      "  </select>",
+      "  <p>Wybrano: {miasto}</p>",
+      "</div>"
+    ]
+  },
+  "FORM-05 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form05",
+      "FORM-05"
+    ],
+    "description": "checkbox (checked by default) -> e.target.checked – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-05 checkbox (checked by default) -> e.target.checked",
+      "const [zgoda, setZgoda] = useState(true);"
+    ]
+  },
+  "FORM-05 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form05j"
+    ],
+    "description": "checkbox (checked by default) -> e.target.checked – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group form-check mb-3\">",
+      "  <input",
+      "    type=\"checkbox\"",
+      "    className=\"form-check-input\"",
+      "    id=\"zgoda\"",
+      "    checked={zgoda}",
+      "    onChange={(e) => setZgoda(e.target.checked)}",
+      "  />",
+      "  <label className=\"form-check-label\" htmlFor=\"zgoda\">Akceptuję regulamin</label>",
+      "  <p>{zgoda ? 'zaznaczony' : 'odznaczony'}</p>",
+      "</div>"
+    ]
+  },
+  "FORM-06 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form06",
+      "FORM-06"
+    ],
+    "description": "checkbox controls disabled of another input (26.06 haslo) – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-06 checkbox controls disabled of another input (26.06 haslo)",
+      "const [generuj, setGeneruj] = useState(true);",
+      "const [haslo, setHaslo] = useState('');"
+    ]
+  },
+  "FORM-06 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form06j"
+    ],
+    "description": "checkbox controls disabled of another input (26.06 haslo) – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group mb-3\">",
+      "  <input",
+      "    type=\"checkbox\"",
+      "    className=\"form-check-input\"",
+      "    id=\"generuj\"",
+      "    checked={generuj}",
+      "    onChange={(e) => setGeneruj(e.target.checked)}",
+      "  />",
+      "  <label className=\"form-check-label ms-1\" htmlFor=\"generuj\">Wygeneruj hasło</label>",
+      "  <br />",
+      "  <label htmlFor=\"haslo\">Hasło:</label>",
+      "  <input",
+      "    type=\"password\"",
+      "    className=\"form-control\"",
+      "    id=\"haslo\"",
+      "    disabled={generuj}",
+      "    value={haslo}",
+      "    onChange={(e) => setHaslo(e.target.value)}",
+      "  />",
+      "</div>"
+    ]
+  },
+  "FORM-07 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form07",
+      "FORM-07"
+    ],
+    "description": "switches (form-switch, inline) for several categories (25.01) – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-07 switches (form-switch, inline) for several categories (25.01)",
+      "const [kwiaty, setKwiaty] = useState(true);",
+      "const [zwierzeta, setZwierzeta] = useState(true);"
+    ]
+  },
+  "FORM-07 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form07j"
+    ],
+    "description": "switches (form-switch, inline) for several categories (25.01) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <div className=\"form-check form-switch form-check-inline\">",
+      "    <input",
+      "      className=\"form-check-input\"",
+      "      type=\"checkbox\"",
+      "      id=\"kwiaty\"",
+      "      checked={kwiaty}",
+      "      onChange={(e) => setKwiaty(e.target.checked)}",
+      "    />",
+      "    <label className=\"form-check-label\" htmlFor=\"kwiaty\">Kwiaty</label>",
+      "  </div>",
+      "  <div className=\"form-check form-switch form-check-inline\">",
+      "    <input",
+      "      className=\"form-check-input\"",
+      "      type=\"checkbox\"",
+      "      id=\"zwierzeta\"",
+      "      checked={zwierzeta}",
+      "      onChange={(e) => setZwierzeta(e.target.checked)}",
+      "    />",
+      "    <label className=\"form-check-label\" htmlFor=\"zwierzeta\">Zwierzęta</label>",
+      "  </div>",
+      "  <p>kwiaty: {String(kwiaty)}, zwierzęta: {String(zwierzeta)}</p>",
+      "</div>"
+    ]
+  },
+  "FORM-08 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form08",
+      "FORM-08"
+    ],
+    "description": "radio buttons (one value from a group) – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-08 radio buttons (one value from a group)",
+      "const [plec, setPlec] = useState('K');"
+    ]
+  },
+  "FORM-08 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form08j"
+    ],
+    "description": "radio buttons (one value from a group) – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group mb-3\">",
+      "  <div className=\"form-check\">",
+      "    <input",
+      "      className=\"form-check-input\"",
+      "      type=\"radio\"",
+      "      name=\"plec\"",
+      "      id=\"kobieta\"",
+      "      value=\"K\"",
+      "      checked={plec === 'K'}",
+      "      onChange={(e) => setPlec(e.target.value)}",
+      "    />",
+      "    <label className=\"form-check-label\" htmlFor=\"kobieta\">Kobieta</label>",
+      "  </div>",
+      "  <div className=\"form-check\">",
+      "    <input",
+      "      className=\"form-check-input\"",
+      "      type=\"radio\"",
+      "      name=\"plec\"",
+      "      id=\"mezczyzna\"",
+      "      value=\"M\"",
+      "      checked={plec === 'M'}",
+      "      onChange={(e) => setPlec(e.target.value)}",
+      "    />",
+      "    <label className=\"form-check-label\" htmlFor=\"mezczyzna\">Mężczyzna</label>",
+      "  </div>",
+      "  <p>Wybrano: {plec}</p>",
+      "</div>"
+    ]
+  },
+  "FORM-09 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form09",
+      "FORM-09"
+    ],
+    "description": "radio group generated from an array – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-09 radio group generated from an array",
+      "const rozmiary = ['S', 'M', 'L', 'XL'];",
+      "const [rozmiar, setRozmiar] = useState('M');"
+    ]
+  },
+  "FORM-09 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form09j"
+    ],
+    "description": "radio group generated from an array – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group mb-3\">",
+      "  {rozmiary.map((r) => (",
+      "    <div key={r} className=\"form-check form-check-inline\">",
+      "      <input",
+      "        className=\"form-check-input\"",
+      "        type=\"radio\"",
+      "        name=\"rozmiar\"",
+      "        id={'rozmiar' + r}",
+      "        value={r}",
+      "        checked={rozmiar === r}",
+      "        onChange={(e) => setRozmiar(e.target.value)}",
+      "      />",
+      "      <label className=\"form-check-label\" htmlFor={'rozmiar' + r}>{r}</label>",
+      "    </div>",
+      "  ))}",
+      "  <p>Rozmiar: {rozmiar}</p>",
+      "</div>"
+    ]
+  },
+  "FORM-10 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form10",
+      "FORM-10"
+    ],
+    "description": "textarea + character counter – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-10 textarea + character counter",
+      "const [opis, setOpis] = useState('');"
+    ]
+  },
+  "FORM-10 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form10j"
+    ],
+    "description": "textarea + character counter – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group mb-3\">",
+      "  <label htmlFor=\"opis\">Opis:</label>",
+      "  <textarea",
+      "    className=\"form-control\"",
+      "    id=\"opis\"",
+      "    rows=\"3\"",
+      "    maxLength={200}",
+      "    value={opis}",
+      "    onChange={(e) => setOpis(e.target.value)}",
+      "  ></textarea>",
+      "  <small className=\"text-muted\">{opis.length}/200</small>",
+      "</div>"
+    ]
+  },
+  "FORM-11 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form11",
+      "FORM-11"
+    ],
+    "description": "ONE object state for many fields, handler uses e.target.name – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-11 ONE object state for many fields, handler uses e.target.name",
+      "const [dane, setDane] = useState({ imie: '', email: '', wiek: '' });",
+      "",
+      "function zmien(e) {",
+      "  setDane({ ...dane, [e.target.name]: e.target.value });   // name attr = key in the object",
+      "}",
+      "",
+      "function wyslij(e) {",
+      "  e.preventDefault();",
+      "  console.log(dane);",
+      "}"
+    ]
+  },
+  "FORM-11 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form11j"
+    ],
+    "description": "ONE object state for many fields, handler uses e.target.name – JSX (inside return)",
+    "body": [
+      "<form onSubmit={wyslij}>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"imieKlienta\">Imię:</label>",
+      "    <input type=\"text\" className=\"form-control\" id=\"imieKlienta\" name=\"imie\" value={dane.imie} onChange={zmien} />",
+      "  </div>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"emailKlienta\">E-mail:</label>",
+      "    <input type=\"email\" className=\"form-control\" id=\"emailKlienta\" name=\"email\" value={dane.email} onChange={zmien} />",
+      "  </div>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"wiekKlienta\">Wiek:</label>",
+      "    <input type=\"number\" className=\"form-control\" id=\"wiekKlienta\" name=\"wiek\" value={dane.wiek} onChange={zmien} />",
+      "  </div>",
+      "  <button type=\"submit\" className=\"btn btn-primary\">Wyślij</button>",
+      "</form>"
+    ]
+  },
+  "FORM-12 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form12",
+      "FORM-12"
+    ],
+    "description": "save a SNAPSHOT on submit, show it below the form (26.06) – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-12 save a SNAPSHOT on submit, show it below the form (26.06)",
+      "const [adres, setAdres] = useState('');",
+      "const [zapisane, setZapisane] = useState({ adres: '' });   // initial = what the illustration shows",
+      "",
+      "function zapisz(e) {",
+      "  e.preventDefault();",
+      "  setZapisane({ adres: adres });",
+      "}"
+    ]
+  },
+  "FORM-12 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form12j"
+    ],
+    "description": "save a SNAPSHOT on submit, show it below the form (26.06) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <form onSubmit={zapisz}>",
+      "    <div className=\"form-group m-2\">",
+      "      <label htmlFor=\"adres\">Adres WWW:</label>",
+      "      <input",
+      "        type=\"text\"",
+      "        className=\"form-control\"",
+      "        id=\"adres\"",
+      "        placeholder=\"Adres strony WWW\"",
+      "        value={adres}",
+      "        onChange={(e) => setAdres(e.target.value)}",
+      "      />",
+      "    </div>",
+      "    <button type=\"submit\" className=\"btn btn-primary m-2\">Zapisz</button>",
+      "  </form>",
+      "  <p className=\"p-2 text-primary lead\">Adres: {zapisane.adres}</p>",
+      "</div>"
+    ]
+  },
+  "FORM-13 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form13",
+      "FORM-13"
+    ],
+    "description": "validation: required fields, message on the page – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-13 validation: required fields, message on the page",
+      "const [login, setLogin] = useState('');",
+      "const [haslo, setHaslo] = useState('');",
+      "const [komunikat, setKomunikat] = useState('');",
+      "",
+      "function zaloguj(e) {",
+      "  e.preventDefault();",
+      "  if (login.trim() === '' || haslo.trim() === '') {",
+      "    setKomunikat('Wypełnij wszystkie pola');",
+      "  } else if (haslo.length < 8) {",
+      "    setKomunikat('Hasło musi mieć co najmniej 8 znaków');",
+      "  } else {",
+      "    setKomunikat('Zalogowano: ' + login);",
+      "  }",
+      "}"
+    ]
+  },
+  "FORM-13 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form13j"
+    ],
+    "description": "validation: required fields, message on the page – JSX (inside return)",
+    "body": [
+      "<form onSubmit={zaloguj}>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"login\">Login:</label>",
+      "    <input type=\"text\" className=\"form-control\" id=\"login\" value={login} onChange={(e) => setLogin(e.target.value)} />",
+      "  </div>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"hasloLogowania\">Hasło:</label>",
+      "    <input type=\"password\" className=\"form-control\" id=\"hasloLogowania\" value={haslo} onChange={(e) => setHaslo(e.target.value)} />",
+      "  </div>",
+      "  <button type=\"submit\" className=\"btn btn-primary\">Zaloguj</button>",
+      "  <p className=\"mt-2\">{komunikat}</p>",
+      "</form>"
+    ]
+  },
+  "FORM-14 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form14",
+      "FORM-14"
+    ],
+    "description": "clear the form after submit (reset all states) – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-14 clear the form after submit (reset all states)",
+      "const [tytul, setTytul] = useState('');",
+      "const [rodzaj, setRodzaj] = useState('');",
+      "",
+      "function dodaj(e) {",
+      "  e.preventDefault();",
+      "  console.log(`tytul: \\${tytul}; rodzaj: \\${rodzaj}`);",
+      "  setTytul('');",
+      "  setRodzaj('');",
+      "}"
+    ]
+  },
+  "FORM-14 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form14j"
+    ],
+    "description": "clear the form after submit (reset all states) – JSX (inside return)",
+    "body": [
+      "<form onSubmit={dodaj}>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"tytul\">Tytuł filmu</label>",
+      "    <input type=\"text\" className=\"form-control\" id=\"tytul\" value={tytul} onChange={(e) => setTytul(e.target.value)} />",
+      "  </div>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"rodzajFilmu\">Rodzaj</label>",
+      "    <select className=\"form-control form-select\" id=\"rodzajFilmu\" value={rodzaj} onChange={(e) => setRodzaj(e.target.value)}>",
+      "      <option value=\"\"></option>",
+      "      <option value=\"1\">Komedia</option>",
+      "      <option value=\"2\">Horror</option>",
+      "    </select>",
+      "  </div>",
+      "  <button type=\"submit\" className=\"btn btn-primary\">Dodaj</button>",
+      "</form>"
+    ]
+  },
+  "FORM-15 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form15",
+      "FORM-15"
+    ],
+    "description": "button with onClick instead of a form (no submit, no reload) – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-15 button with onClick instead of a form (no submit, no reload)",
+      "const [tekst, setTekst] = useState('');",
+      "",
+      "function pokaz() {",
+      "  console.log(tekst);",
+      "  alert('Wpisano: ' + tekst);",
+      "}"
+    ]
+  },
+  "FORM-15 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form15j"
+    ],
+    "description": "button with onClick instead of a form (no submit, no reload) – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group mb-3\">",
+      "  <label htmlFor=\"tekst\">Tekst:</label>",
+      "  <input type=\"text\" className=\"form-control\" id=\"tekst\" value={tekst} onChange={(e) => setTekst(e.target.value)} />",
+      "  <button type=\"button\" className=\"btn btn-primary mt-2\" onClick={pokaz}>Pokaż</button>",
+      "</div>"
+    ]
+  },
+  "FORM-16 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form16",
+      "FORM-16"
+    ],
+    "description": "range slider with live value – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-16 range slider with live value",
+      "const [glosnosc, setGlosnosc] = useState(50);"
+    ]
+  },
+  "FORM-16 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form16j"
+    ],
+    "description": "range slider with live value – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group mb-3\">",
+      "  <label htmlFor=\"glosnosc\" className=\"form-label\">Głośność: {glosnosc}</label>",
+      "  <input",
+      "    type=\"range\"",
+      "    className=\"form-range\"",
+      "    id=\"glosnosc\"",
+      "    min=\"0\"",
+      "    max=\"100\"",
+      "    value={glosnosc}",
+      "    onChange={(e) => setGlosnosc(Number(e.target.value))}",
+      "  />",
+      "</div>"
+    ]
+  },
+  "FORM-17 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form17",
+      "FORM-17"
+    ],
+    "description": "uncontrolled input read with useRef (allowed: \"React way\", not DOM) – LOGIC (above return) | needs useRef",
+    "body": [
+      "// FORM-17 uncontrolled input read with useRef (allowed: \"React way\", not DOM)",
+      "const poleRef = useRef(null);",
+      "",
+      "function pokaz(e) {",
+      "  e.preventDefault();",
+      "  console.log(poleRef.current.value);",
+      "}"
+    ]
+  },
+  "FORM-17 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form17j"
+    ],
+    "description": "uncontrolled input read with useRef (allowed: \"React way\", not DOM) – JSX (inside return)",
+    "body": [
+      "<form onSubmit={pokaz}>",
+      "  <div className=\"form-group mb-3\">",
+      "    <label htmlFor=\"nazwisko\">Nazwisko:</label>",
+      "    <input type=\"text\" className=\"form-control\" id=\"nazwisko\" ref={poleRef} />",
+      "  </div>",
+      "  <button type=\"submit\" className=\"btn btn-primary\">Pokaż</button>",
+      "</form>"
+    ]
+  },
+  "FORM-18 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form18",
+      "FORM-18"
+    ],
+    "description": "date + tel inputs (time / email work the same; type only changes the picker) – LOGIC (above return) | needs useState",
+    "body": [
+      "// FORM-18 date + tel inputs (time / email work the same; type only changes the picker)",
+      "const [data, setData] = useState('');",
+      "const [telefon, setTelefon] = useState('');"
+    ]
+  },
+  "FORM-18 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "form18j"
+    ],
+    "description": "date + tel inputs (time / email work the same; type only changes the picker) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"data\">Data wizyty:</label>",
+      "    <input type=\"date\" className=\"form-control\" id=\"data\" value={data} onChange={(e) => setData(e.target.value)} />",
+      "  </div>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"telefon\">Telefon:</label>",
+      "    <input type=\"tel\" className=\"form-control\" id=\"telefon\" placeholder=\"123-456-789\" value={telefon} onChange={(e) => setTelefon(e.target.value)} />",
+      "  </div>",
+      "  <p>data (format RRRR-MM-DD): {data}</p>",
+      "</div>"
+    ]
+  },
+  "LIST-01 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list01",
+      "LIST-01"
+    ],
+    "description": "count (length) + numbered list <ol> from array of strings (22.06) – LOGIC (above return)",
+    "body": [
+      "// LIST-01 count (length) + numbered list <ol> from array of strings (22.06)",
+      "const kursy = ['Programowanie w C#', 'Angular dla początkujących', 'Kurs Django'];"
+    ]
+  },
+  "LIST-01 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list01j"
+    ],
+    "description": "count (length) + numbered list <ol> from array of strings (22.06) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <h2>Liczba kursów: {kursy.length}</h2>",
+      "  <ol>",
+      "    {kursy.map((kurs) => (",
+      "      <li key={kurs}>{kurs}</li>",
+      "    ))}",
+      "  </ol>",
+      "</div>"
+    ]
+  },
+  "LIST-02 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list02",
+      "LIST-02"
+    ],
+    "description": "map with index (number before item, key = index) – LOGIC (above return)",
+    "body": [
+      "// LIST-02 map with index (number before item, key = index)",
+      "const produkty = ['Chleb', 'Mleko', 'Masło'];"
+    ]
+  },
+  "LIST-02 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list02j"
+    ],
+    "description": "map with index (number before item, key = index) – JSX (inside return)",
+    "body": [
+      "<ul className=\"list-group\">",
+      "  {produkty.map((p, i) => (",
+      "    <li key={i} className=\"list-group-item\">{i + 1}. {p}</li>",
+      "  ))}",
+      "</ul>"
+    ]
+  },
+  "LIST-03 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list03",
+      "LIST-03"
+    ],
+    "description": "array of objects -> table rows – LOGIC (above return)",
+    "body": [
+      "// LIST-03 array of objects -> table rows",
+      "const uczniowie = [",
+      "  { id: 1, imie: 'Anna', ocena: 5 },",
+      "  { id: 2, imie: 'Jan', ocena: 3 },",
+      "  { id: 3, imie: 'Ola', ocena: 4 },",
+      "];"
+    ]
+  },
+  "LIST-03 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list03j"
+    ],
+    "description": "array of objects -> table rows – JSX (inside return)",
+    "body": [
+      "<table className=\"table table-striped\">",
+      "  <thead>",
+      "    <tr>",
+      "      <th>Lp.</th>",
+      "      <th>Imię</th>",
+      "      <th>Ocena</th>",
+      "    </tr>",
+      "  </thead>",
+      "  <tbody>",
+      "    {uczniowie.map((u) => (",
+      "      <tr key={u.id}>",
+      "        <td>{u.id}</td>",
+      "        <td>{u.imie}</td>",
+      "        <td>{u.ocena}</td>",
+      "      </tr>",
+      "    ))}",
+      "  </tbody>",
+      "</table>"
+    ]
+  },
+  "LIST-04 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list04",
+      "LIST-04"
+    ],
+    "description": "array of objects -> cards side by side (img + h4 + button) (25.01) – LOGIC (above return) | needs - (images in public/assets)",
+    "body": [
+      "// LIST-04 array of objects -> cards side by side (img + h4 + button) (25.01)",
+      "const zdjecia = [",
+      "  { id: 0, alt: 'Mak', filename: 'obraz1.jpg', downloads: 35 },",
+      "  { id: 1, alt: 'Bratek', filename: 'obraz2.jpg', downloads: 43 },",
+      "];"
+    ]
+  },
+  "LIST-04 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list04j"
+    ],
+    "description": "array of objects -> cards side by side (img + h4 + button) (25.01) – JSX (inside return)",
+    "body": [
+      "<div className=\"d-flex flex-wrap\">",
+      "  {zdjecia.map((z) => (",
+      "    <div key={z.id} className=\"text-center\">",
+      "      <img src={'/assets/' + z.filename} alt={z.alt} className=\"rounded m-1\" width=\"120\" />",
+      "      <h4>Pobrań: {z.downloads}</h4>",
+      "      <button type=\"button\" className=\"btn btn-success\">Pobierz</button>",
+      "    </div>",
+      "  ))}",
+      "</div>"
+    ]
+  },
+  "LIST-05 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list05",
+      "LIST-05"
+    ],
+    "description": "render only items that pass a condition (filter -> map) – LOGIC (above return)",
+    "body": [
+      "// LIST-05 render only items that pass a condition (filter -> map)",
+      "const oceny = [5, 2, 4, 1, 3, 6];",
+      "const zdane = oceny.filter((o) => o >= 2);"
+    ]
+  },
+  "LIST-05 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list05j"
+    ],
+    "description": "render only items that pass a condition (filter -> map) – JSX (inside return)",
+    "body": [
+      "<p>Zdane oceny ({zdane.length}): {zdane.join(', ')}</p>"
+    ]
+  },
+  "LIST-06 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list06",
+      "LIST-06"
+    ],
+    "description": "condition INSIDE map: function with if + return (25.01 key wording) – LOGIC (above return) | needs useState",
+    "body": [
+      "// LIST-06 condition INSIDE map: function with if + return (25.01 key wording)",
+      "const [pokazParzyste, setPokazParzyste] = useState(true);",
+      "const liczby = [1, 2, 3, 4, 5, 6];",
+      "",
+      "function rysuj(liczba) {",
+      "  if (liczba % 2 === 0 && !pokazParzyste) {",
+      "    return null;                     // nothing is rendered for this element",
+      "  }",
+      "  return <span key={liczba} className=\"badge bg-primary me-1\">{liczba}</span>;",
+      "}"
+    ]
+  },
+  "LIST-06 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list06j"
+    ],
+    "description": "condition INSIDE map: function with if + return (25.01 key wording) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <button type=\"button\" className=\"btn btn-sm btn-outline-secondary mb-2\" onClick={() => setPokazParzyste(!pokazParzyste)}>",
+      "    parzyste: {pokazParzyste ? 'widoczne' : 'ukryte'}",
+      "  </button>",
+      "  <div>{liczby.map(rysuj)}</div>",
+      "</div>"
+    ]
+  },
+  "LIST-07 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list07",
+      "LIST-07"
+    ],
+    "description": "find one element by id / by name – LOGIC (above return)",
+    "body": [
+      "// LIST-07 find one element by id / by name",
+      "const osoby = [",
+      "  { id: 1, imie: 'Anna' },",
+      "  { id: 2, imie: 'Jan' },",
+      "];",
+      "const szukana = osoby.find((o) => o.id === 2);          // undefined if not found",
+      "const indeks = osoby.findIndex((o) => o.imie === 'Anna'); // -1 if not found"
+    ]
+  },
+  "LIST-07 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list07j"
+    ],
+    "description": "find one element by id / by name – JSX (inside return)",
+    "body": [
+      "<p>find: {szukana ? szukana.imie : 'brak'}, findIndex: {indeks}</p>"
+    ]
+  },
+  "LIST-08 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list08",
+      "LIST-08"
+    ],
+    "description": "sort a COPY (never sort state in place): numbers, strings, by field – LOGIC (above return)",
+    "body": [
+      "// LIST-08 sort a COPY (never sort state in place): numbers, strings, by field",
+      "const liczby = [10, 2, 33, 4];",
+      "const rosnaco = [...liczby].sort((a, b) => a - b);      // without (a,b)=>a-b: \"10\" < \"2\"!",
+      "const imiona = ['Żaneta', 'Adam', 'łukasz', 'Ewa'];",
+      "const alfabetycznie = [...imiona].sort((a, b) => a.localeCompare(b, 'pl'));",
+      "const ludzie = [{ imie: 'Jan', wiek: 30 }, { imie: 'Ala', wiek: 20 }];",
+      "const wgWieku = [...ludzie].sort((a, b) => a.wiek - b.wiek);"
+    ]
+  },
+  "LIST-08 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list08j"
+    ],
+    "description": "sort a COPY (never sort state in place): numbers, strings, by field – JSX (inside return)",
+    "body": [
+      "<ul>",
+      "  <li>{rosnaco.join(', ')}</li>",
+      "  <li>{alfabetycznie.join(', ')}</li>",
+      "  <li>{wgWieku.map((l) => l.imie).join(', ')}</li>",
+      "</ul>"
+    ]
+  },
+  "LIST-09 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list09",
+      "LIST-09"
+    ],
+    "description": "sum / average / min / max of an array (reduce, Math) – LOGIC (above return)",
+    "body": [
+      "// LIST-09 sum / average / min / max of an array (reduce, Math)",
+      "const ceny = [12.5, 7, 30, 4.99];",
+      "const suma = ceny.reduce((acc, c) => acc + c, 0);",
+      "const srednia = ceny.length > 0 ? suma / ceny.length : 0;",
+      "const min = Math.min(...ceny);",
+      "const max = Math.max(...ceny);"
+    ]
+  },
+  "LIST-09 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list09j"
+    ],
+    "description": "sum / average / min / max of an array (reduce, Math) – JSX (inside return)",
+    "body": [
+      "<p>suma: {suma.toFixed(2)}, średnia: {srednia.toFixed(2)}, min: {min}, max: {max}</p>"
+    ]
+  },
+  "LIST-10 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list10",
+      "LIST-10"
+    ],
+    "description": "search box: filter list by typed text (case-insensitive) – LOGIC (above return) | needs useState",
+    "body": [
+      "// LIST-10 search box: filter list by typed text (case-insensitive)",
+      "const miasta = ['Warszawa', 'Kraków', 'Wrocław', 'Gdańsk', 'Poznań'];",
+      "const [szukaj, setSzukaj] = useState('');",
+      "const wynik = miasta.filter((m) => m.toLowerCase().includes(szukaj.toLowerCase()));"
+    ]
+  },
+  "LIST-10 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list10j"
+    ],
+    "description": "search box: filter list by typed text (case-insensitive) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"szukaj\">Szukaj:</label>",
+      "    <input type=\"text\" className=\"form-control\" id=\"szukaj\" value={szukaj} onChange={(e) => setSzukaj(e.target.value)} />",
+      "  </div>",
+      "  <ul>",
+      "    {wynik.map((m) => <li key={m}>{m}</li>)}",
+      "  </ul>",
+      "  {wynik.length === 0 && <p>Brak wyników</p>}",
+      "</div>"
+    ]
+  },
+  "LIST-11 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list11",
+      "LIST-11"
+    ],
+    "description": "group / filter by category select (category numbers like in dane.txt) – LOGIC (above return) | needs useState",
+    "body": [
+      "// LIST-11 group / filter by category select (category numbers like in dane.txt)",
+      "const kategorie = ['', 'kwiaty', 'zwierzęta', 'samochody'];   // index = category number",
+      "const elementy = [",
+      "  { id: 1, nazwa: 'Róża', category: 1 },",
+      "  { id: 2, nazwa: 'Kot', category: 2 },",
+      "  { id: 3, nazwa: 'Fiat', category: 3 },",
+      "  { id: 4, nazwa: 'Tulipan', category: 1 },",
+      "];",
+      "const [wybrana, setWybrana] = useState(0);                     // 0 = all"
+    ]
+  },
+  "LIST-11 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list11j"
+    ],
+    "description": "group / filter by category select (category numbers like in dane.txt) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <label htmlFor=\"kategoria\">Kategoria:</label>",
+      "  <select className=\"form-control form-select mb-2\" id=\"kategoria\" value={wybrana} onChange={(e) => setWybrana(Number(e.target.value))}>",
+      "    <option value={0}>wszystkie</option>",
+      "    {kategorie.map((k, i) => i > 0 && <option key={i} value={i}>{k}</option>)}",
+      "  </select>",
+      "  <ul>",
+      "    {elementy",
+      "      .filter((el) => wybrana === 0 || el.category === wybrana)",
+      "      .map((el) => <li key={el.id}>{el.nazwa} ({kategorie[el.category]})</li>)}",
+      "  </ul>",
+      "</div>"
+    ]
+  },
+  "LIST-12 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list12",
+      "LIST-12"
+    ],
+    "description": "includes / indexOf / some / every on arrays – LOGIC (above return)",
+    "body": [
+      "// LIST-12 includes / indexOf / some / every on arrays",
+      "const koszyk = ['jabłko', 'banan'];",
+      "const oceny = [4, 5, 3];"
+    ]
+  },
+  "LIST-12 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list12j"
+    ],
+    "description": "includes / indexOf / some / every on arrays – JSX (inside return)",
+    "body": [
+      "<ul>",
+      "  <li>includes banan: {String(koszyk.includes('banan'))}</li>",
+      "  <li>indexOf gruszka: {koszyk.indexOf('gruszka')}</li>",
+      "  <li>some &lt; 3: {String(oceny.some((o) => o < 3))}</li>",
+      "  <li>every &gt;= 3: {String(oceny.every((o) => o >= 3))}</li>",
+      "</ul>"
+    ]
+  },
+  "LIST-13 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list13",
+      "LIST-13"
+    ],
+    "description": "nested map (array of arrays -> grid / board) – LOGIC (above return)",
+    "body": [
+      "// LIST-13 nested map (array of arrays -> grid / board)",
+      "const plansza = [",
+      "  [1, 2, 3],",
+      "  [4, 5, 6],",
+      "  [7, 8, 9],",
+      "];"
+    ]
+  },
+  "LIST-13 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list13j"
+    ],
+    "description": "nested map (array of arrays -> grid / board) – JSX (inside return)",
+    "body": [
+      "<table className=\"table table-bordered w-auto\">",
+      "  <tbody>",
+      "    {plansza.map((wiersz, w) => (",
+      "      <tr key={w}>",
+      "        {wiersz.map((pole, k) => <td key={k}>{pole}</td>)}",
+      "      </tr>",
+      "    ))}",
+      "  </tbody>",
+      "</table>"
+    ]
+  },
+  "LIST-14 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list14",
+      "LIST-14"
+    ],
+    "description": "array of numbers 1..n generated (Array.from) – LOGIC (above return)",
+    "body": [
+      "// LIST-14 array of numbers 1..n generated (Array.from)",
+      "const n = 5;",
+      "const liczby = Array.from({ length: n }, (_, i) => i + 1);   // [1, 2, 3, 4, 5]"
+    ]
+  },
+  "LIST-14 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "list14j"
+    ],
+    "description": "array of numbers 1..n generated (Array.from) – JSX (inside return)",
+    "body": [
+      "<p>{liczby.join(' ')}</p>"
+    ]
+  },
+  "STATE-01 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state01",
+      "STATE-01"
+    ],
+    "description": "counter + / - / reset – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-01 counter + / - / reset",
+      "const [licznik, setLicznik] = useState(0);"
+    ]
+  },
+  "STATE-01 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state01j"
+    ],
+    "description": "counter + / - / reset – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <h4>Licznik: {licznik}</h4>",
+      "  <button type=\"button\" className=\"btn btn-primary me-1\" onClick={() => setLicznik(licznik + 1)}>+</button>",
+      "  <button type=\"button\" className=\"btn btn-primary me-1\" onClick={() => setLicznik(licznik - 1)}>-</button>",
+      "  <button type=\"button\" className=\"btn btn-secondary\" onClick={() => setLicznik(0)}>Zeruj</button>",
+      "</div>"
+    ]
+  },
+  "STATE-02 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state02",
+      "STATE-02"
+    ],
+    "description": "functional update setX(prev => ...) (safe in timers / many updates) – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-02 functional update setX(prev => ...) (safe in timers / many updates)",
+      "const [punkty, setPunkty] = useState(0);",
+      "",
+      "function dodajTrzy() {",
+      "  setPunkty((p) => p + 1);   // with setPunkty(punkty + 1) three times you'd get only +1",
+      "  setPunkty((p) => p + 1);",
+      "  setPunkty((p) => p + 1);",
+      "}"
+    ]
+  },
+  "STATE-02 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state02j"
+    ],
+    "description": "functional update setX(prev => ...) (safe in timers / many updates) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <p>Punkty: {punkty}</p>",
+      "  <button type=\"button\" className=\"btn btn-primary\" onClick={dodajTrzy}>+3</button>",
+      "</div>"
+    ]
+  },
+  "STATE-03 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state03",
+      "STATE-03"
+    ],
+    "description": "toggle boolean (show / hide, on / off) – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-03 toggle boolean (show / hide, on / off)",
+      "const [widoczny, setWidoczny] = useState(false);"
+    ]
+  },
+  "STATE-03 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state03j"
+    ],
+    "description": "toggle boolean (show / hide, on / off) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <button type=\"button\" className=\"btn btn-info mb-2\" onClick={() => setWidoczny(!widoczny)}>",
+      "    {widoczny ? 'Ukryj' : 'Pokaż'}",
+      "  </button>",
+      "  {widoczny && <p>Tajna treść</p>}",
+      "</div>"
+    ]
+  },
+  "STATE-04 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state04",
+      "STATE-04"
+    ],
+    "description": "increment a field of ONE object in an array by id (25.01 Pobierz) – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-04 increment a field of ONE object in an array by id (25.01 Pobierz)",
+      "const [zdjecia, setZdjecia] = useState([",
+      "  { id: 0, alt: 'Mak', downloads: 35 },",
+      "  { id: 1, alt: 'Bratek', downloads: 43 },",
+      "]);",
+      "",
+      "function pobierz(id) {",
+      "  setZdjecia(zdjecia.map((z) => (z.id === id ? { ...z, downloads: z.downloads + 1 } : z)));",
+      "}"
+    ]
+  },
+  "STATE-04 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state04j"
+    ],
+    "description": "increment a field of ONE object in an array by id (25.01 Pobierz) – JSX (inside return)",
+    "body": [
+      "<ul>",
+      "  {zdjecia.map((z) => (",
+      "    <li key={z.id}>",
+      "      {z.alt} - Pobrań: {z.downloads}{' '}",
+      "      <button type=\"button\" className=\"btn btn-success btn-sm\" onClick={() => pobierz(z.id)}>Pobierz</button>",
+      "    </li>",
+      "  ))}",
+      "</ul>"
+    ]
+  },
+  "STATE-05 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state05",
+      "STATE-05"
+    ],
+    "description": "add an item to an array (spread, new id) – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-05 add an item to an array (spread, new id)",
+      "const [zadania, setZadania] = useState([{ id: 1, tekst: 'Zakupy' }]);",
+      "const [nowe, setNowe] = useState('');",
+      "",
+      "function dodaj(e) {",
+      "  e.preventDefault();",
+      "  if (nowe.trim() === '') {",
+      "    return;",
+      "  }",
+      "  setZadania([...zadania, { id: Date.now(), tekst: nowe }]);",
+      "  setNowe('');",
+      "}"
+    ]
+  },
+  "STATE-05 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state05j"
+    ],
+    "description": "add an item to an array (spread, new id) – JSX (inside return)",
+    "body": [
+      "<form onSubmit={dodaj}>",
+      "  <div className=\"form-group mb-2\">",
+      "    <label htmlFor=\"nowe\">Nowe zadanie:</label>",
+      "    <input type=\"text\" className=\"form-control\" id=\"nowe\" value={nowe} onChange={(e) => setNowe(e.target.value)} />",
+      "  </div>",
+      "  <button type=\"submit\" className=\"btn btn-primary mb-2\">Dodaj</button>",
+      "  <ul>",
+      "    {zadania.map((z) => <li key={z.id}>{z.tekst}</li>)}",
+      "  </ul>",
+      "</form>"
+    ]
+  },
+  "STATE-06 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state06",
+      "STATE-06"
+    ],
+    "description": "remove an item from an array (filter by id) – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-06 remove an item from an array (filter by id)",
+      "const [osoby, setOsoby] = useState([",
+      "  { id: 1, imie: 'Anna' },",
+      "  { id: 2, imie: 'Jan' },",
+      "  { id: 3, imie: 'Ola' },",
+      "]);",
+      "",
+      "function usun(id) {",
+      "  setOsoby(osoby.filter((o) => o.id !== id));",
+      "}"
+    ]
+  },
+  "STATE-06 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state06j"
+    ],
+    "description": "remove an item from an array (filter by id) – JSX (inside return)",
+    "body": [
+      "<ul className=\"list-group\">",
+      "  {osoby.map((o) => (",
+      "    <li key={o.id} className=\"list-group-item d-flex justify-content-between\">",
+      "      {o.imie}",
+      "      <button type=\"button\" className=\"btn btn-danger btn-sm\" onClick={() => usun(o.id)}>Usuń</button>",
+      "    </li>",
+      "  ))}",
+      "</ul>"
+    ]
+  },
+  "STATE-07 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state07",
+      "STATE-07"
+    ],
+    "description": "toggle a boolean field of one item (done / not done) – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-07 toggle a boolean field of one item (done / not done)",
+      "const [lista, setLista] = useState([",
+      "  { id: 1, tekst: 'Nauczyć się React', zrobione: false },",
+      "  { id: 2, tekst: 'Zdać INF.04', zrobione: false },",
+      "]);",
+      "",
+      "function przelacz(id) {",
+      "  setLista(lista.map((el) => (el.id === id ? { ...el, zrobione: !el.zrobione } : el)));",
+      "}"
+    ]
+  },
+  "STATE-07 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state07j"
+    ],
+    "description": "toggle a boolean field of one item (done / not done) – JSX (inside return)",
+    "body": [
+      "<ul>",
+      "  {lista.map((el) => (",
+      "    <li key={el.id} onClick={() => przelacz(el.id)} style={{ cursor: 'pointer', textDecoration: el.zrobione ? 'line-through' : 'none' }}>",
+      "      {el.tekst}",
+      "    </li>",
+      "  ))}",
+      "</ul>"
+    ]
+  },
+  "STATE-08 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state08",
+      "STATE-08"
+    ],
+    "description": "update one field of an object in state (spread) – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-08 update one field of an object in state (spread)",
+      "const [osoba, setOsoba] = useState({ imie: 'Jan', wiek: 18 });",
+      "",
+      "function postarz() {",
+      "  setOsoba({ ...osoba, wiek: osoba.wiek + 1 });",
+      "}"
+    ]
+  },
+  "STATE-08 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state08j"
+    ],
+    "description": "update one field of an object in state (spread) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <p>{osoba.imie}, wiek: {osoba.wiek}</p>",
+      "  <button type=\"button\" className=\"btn btn-primary\" onClick={postarz}>Urodziny</button>",
+      "</div>"
+    ]
+  },
+  "STATE-09 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state09",
+      "STATE-09"
+    ],
+    "description": "change value at index in array of numbers (copy, change, set) – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-09 change value at index in array of numbers (copy, change, set)",
+      "const [glosy, setGlosy] = useState([0, 0, 0]);",
+      "const kandydaci = ['A', 'B', 'C'];",
+      "",
+      "function glosuj(i) {",
+      "  const kopia = [...glosy];",
+      "  kopia[i] = kopia[i] + 1;",
+      "  setGlosy(kopia);",
+      "}"
+    ]
+  },
+  "STATE-09 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state09j"
+    ],
+    "description": "change value at index in array of numbers (copy, change, set) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  {kandydaci.map((k, i) => (",
+      "    <button key={k} type=\"button\" className=\"btn btn-outline-primary me-1\" onClick={() => glosuj(i)}>",
+      "      {k}: {glosy[i]}",
+      "    </button>",
+      "  ))}",
+      "</div>"
+    ]
+  },
+  "STATE-10 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state10",
+      "STATE-10"
+    ],
+    "description": "derived value: compute from state in render, don't store it – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-10 derived value: compute from state in render, don't store it",
+      "const [ilosc, setIlosc] = useState(1);",
+      "const cena = 19.99;",
+      "const razem = ilosc * cena;              // no extra useState needed"
+    ]
+  },
+  "STATE-10 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state10j"
+    ],
+    "description": "derived value: compute from state in render, don't store it – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group\">",
+      "  <label htmlFor=\"ilosc\">Ilość:</label>",
+      "  <input type=\"number\" className=\"form-control\" id=\"ilosc\" min=\"1\" value={ilosc} onChange={(e) => setIlosc(Number(e.target.value))} />",
+      "  <p>Do zapłaty: {razem.toFixed(2)} zł</p>",
+      "</div>"
+    ]
+  },
+  "STATE-11 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state11",
+      "STATE-11"
+    ],
+    "description": "several checkboxes -> array of selected values – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-11 several checkboxes -> array of selected values",
+      "const dodatki = ['ser', 'szynka', 'pieczarki', 'oliwki'];",
+      "const [wybrane, setWybrane] = useState([]);",
+      "",
+      "function zmien(dodatek, zaznaczony) {",
+      "  if (zaznaczony) {",
+      "    setWybrane([...wybrane, dodatek]);",
+      "  } else {",
+      "    setWybrane(wybrane.filter((d) => d !== dodatek));",
+      "  }",
+      "}"
+    ]
+  },
+  "STATE-11 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state11j"
+    ],
+    "description": "several checkboxes -> array of selected values – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  {dodatki.map((d) => (",
+      "    <div key={d} className=\"form-check\">",
+      "      <input",
+      "        className=\"form-check-input\"",
+      "        type=\"checkbox\"",
+      "        id={'dodatek-' + d}",
+      "        checked={wybrane.includes(d)}",
+      "        onChange={(e) => zmien(d, e.target.checked)}",
+      "      />",
+      "      <label className=\"form-check-label\" htmlFor={'dodatek-' + d}>{d}</label>",
+      "    </div>",
+      "  ))}",
+      "  <p>Wybrane: {wybrane.join(', ')}</p>",
+      "</div>"
+    ]
+  },
+  "STATE-12 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state12",
+      "STATE-12"
+    ],
+    "description": "object of category flags -> one handler for many switches – LOGIC (above return) | needs useState",
+    "body": [
+      "// STATE-12 object of category flags -> one handler for many switches",
+      "const [filtry, setFiltry] = useState({ 1: true, 2: true, 3: true });   // category number -> on/off",
+      "const nazwy = { 1: 'Kwiaty', 2: 'Zwierzęta', 3: 'Samochody' };",
+      "",
+      "function zmienFiltr(kat) {",
+      "  setFiltry({ ...filtry, [kat]: !filtry[kat] });",
+      "}"
+    ]
+  },
+  "STATE-12 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "state12j"
+    ],
+    "description": "object of category flags -> one handler for many switches – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  {Object.keys(nazwy).map((kat) => (",
+      "    <div key={kat} className=\"form-check form-switch form-check-inline\">",
+      "      <input className=\"form-check-input\" type=\"checkbox\" id={'kat' + kat} checked={filtry[kat]} onChange={() => zmienFiltr(kat)} />",
+      "      <label className=\"form-check-label\" htmlFor={'kat' + kat}>{nazwy[kat]}</label>",
+      "    </div>",
+      "  ))}",
+      "  <p>{JSON.stringify(filtry)}</p>",
+      "</div>"
+    ]
+  },
+  "VIEW-01 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view01",
+      "VIEW-01"
+    ],
+    "description": "conditional: && (show or nothing) and ternary (A or B) – LOGIC (above return) | needs useState",
+    "body": [
+      "// VIEW-01 conditional: && (show or nothing) and ternary (A or B)",
+      "const [zalogowany, setZalogowany] = useState(false);"
+    ]
+  },
+  "VIEW-01 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view01j"
+    ],
+    "description": "conditional: && (show or nothing) and ternary (A or B) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  {zalogowany && <p className=\"text-success\">Witaj!</p>}",
+      "  <p>{zalogowany ? 'Jesteś zalogowany' : 'Zaloguj się'}</p>",
+      "  <button type=\"button\" className=\"btn btn-primary\" onClick={() => setZalogowany(!zalogowany)}>Przełącz</button>",
+      "</div>"
+    ]
+  },
+  "VIEW-02 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view02",
+      "VIEW-02"
+    ],
+    "description": "if / else before return (several cases -> one variable) – LOGIC (above return)",
+    "body": [
+      "// VIEW-02 if / else before return (several cases -> one variable)",
+      "const punkty = 72;",
+      "let ocena;",
+      "if (punkty >= 90) {",
+      "  ocena = 'celujący';",
+      "} else if (punkty >= 75) {",
+      "  ocena = 'bardzo dobry';",
+      "} else if (punkty >= 50) {",
+      "  ocena = 'dobry';",
+      "} else {",
+      "  ocena = 'niedostateczny';",
+      "}"
+    ]
+  },
+  "VIEW-02 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view02j"
+    ],
+    "description": "if / else before return (several cases -> one variable) – JSX (inside return)",
+    "body": [
+      "<p>{punkty} pkt - {ocena}</p>"
+    ]
+  },
+  "VIEW-03 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view03",
+      "VIEW-03"
+    ],
+    "description": "className chosen by condition (Bootstrap text / bg colours) – LOGIC (above return) | needs useState",
+    "body": [
+      "// VIEW-03 className chosen by condition (Bootstrap text / bg colours)",
+      "const [liczba, setLiczba] = useState(5);"
+    ]
+  },
+  "VIEW-03 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view03j"
+    ],
+    "description": "className chosen by condition (Bootstrap text / bg colours) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <p className={liczba >= 0 ? 'text-success' : 'text-danger'}>{liczba}</p>",
+      "  <p className={`p-2 \\${liczba % 2 === 0 ? 'bg-info' : 'bg-warning'}`}>parzysta? {liczba % 2 === 0 ? 'tak' : 'nie'}</p>",
+      "  <button type=\"button\" className=\"btn btn-sm btn-secondary\" onClick={() => setLiczba(liczba - 3)}>-3</button>",
+      "</div>"
+    ]
+  },
+  "VIEW-04 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view04",
+      "VIEW-04"
+    ],
+    "description": "inline style object (camelCase, number = px) – LOGIC (above return)",
+    "body": [
+      "// VIEW-04 inline style object (camelCase, number = px)",
+      "const styl = { backgroundColor: 'SteelBlue', color: 'white', padding: 10, borderRadius: 8, fontSize: '1.2rem' };"
+    ]
+  },
+  "VIEW-04 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view04j"
+    ],
+    "description": "inline style object (camelCase, number = px) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <div style={styl}>Styl z obiektu</div>",
+      "  <div style={{ marginTop: 5, textAlign: 'center' }}>Styl wpisany w JSX</div>",
+      "</div>"
+    ]
+  },
+  "VIEW-05 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view05",
+      "VIEW-05"
+    ],
+    "description": "rules in App.css (key checks CSS FILE, e.g. body padding, img margin) – LOGIC (above return) | needs import './App.css'",
+    "body": [
+      "// VIEW-05 rules in App.css (key checks CSS FILE, e.g. body padding, img margin)",
+      "// App.css:",
+      "//   body { padding: 20px; }",
+      "//   img  { margin: 5px; border-radius: 10px; }",
+      "//   .wyrozniony { font-weight: bold; color: darkred; }",
+      "// App.jsx (top):  import './App.css';",
+      "//   <p className=\"wyrozniony\">...</p>",
+      "// (the viewer has no App.css, so this demo fakes the look with Bootstrap classes)"
+    ]
+  },
+  "VIEW-05 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view05j"
+    ],
+    "description": "rules in App.css (key checks CSS FILE, e.g. body padding, img margin) – JSX (inside return)",
+    "body": [
+      "<p className=\"fw-bold text-danger\">wyrozniony</p>"
+    ]
+  },
+  "VIEW-06 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view06",
+      "VIEW-06"
+    ],
+    "description": "Bootstrap grid: row + columns (responsive, 3 per row) – LOGIC (above return)",
+    "body": [
+      "// VIEW-06 Bootstrap grid: row + columns (responsive, 3 per row)",
+      "const elementy = ['A', 'B', 'C', 'D', 'E'];"
+    ]
+  },
+  "VIEW-06 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view06j"
+    ],
+    "description": "Bootstrap grid: row + columns (responsive, 3 per row) – JSX (inside return)",
+    "body": [
+      "<div className=\"container\">",
+      "  <div className=\"row\">",
+      "    {elementy.map((el) => (",
+      "      <div key={el} className=\"col-12 col-md-4 border p-2 text-center\">{el}</div>",
+      "    ))}",
+      "  </div>",
+      "</div>"
+    ]
+  },
+  "VIEW-07 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view07",
+      "VIEW-07"
+    ],
+    "description": "images: public/assets (string path) vs src/assets (import) – LOGIC (above return)",
+    "body": [
+      "// VIEW-07 images: public/assets (string path) vs src/assets (import)",
+      "// 1) file in egzamin/public/assets/obraz1.jpg -> path from the site root, no import:",
+      "const plik = 'obraz1.jpg';",
+      "// 2) file in egzamin/src/assets/logo.png -> import at the top of App.jsx:",
+      "//    import logo from './assets/logo.png';   then  <img src={logo} alt=\"logo\" />"
+    ]
+  },
+  "VIEW-07 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view07j"
+    ],
+    "description": "images: public/assets (string path) vs src/assets (import) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <img src=\"/assets/obraz1.jpg\" alt=\"Mak\" className=\"rounded\" width=\"100\" style={{ margin: 5 }} />",
+      "  <img src={'/assets/' + plik} alt=\"ten sam z zmiennej\" className=\"rounded\" width=\"100\" style={{ margin: 5 }} />",
+      "  <img src={`/assets/\\${plik}`} alt=\"template string\" className=\"rounded\" width=\"100\" style={{ margin: 5 }} />",
+      "</div>"
+    ]
+  },
+  "VIEW-08 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view08",
+      "VIEW-08"
+    ],
+    "description": "image chosen from state (e.g. dice kosc1..6.png) – LOGIC (above return) | needs useState",
+    "body": [
+      "// VIEW-08 image chosen from state (e.g. dice kosc1..6.png)",
+      "const [oczka, setOczka] = useState(1);"
+    ]
+  },
+  "VIEW-08 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view08j"
+    ],
+    "description": "image chosen from state (e.g. dice kosc1..6.png) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <img src={`/assets/kosc\\${oczka}.png`} alt={'kostka ' + oczka} width=\"60\" />",
+      "  <button type=\"button\" className=\"btn btn-primary ms-2\" onClick={() => setOczka((oczka % 6) + 1)}>Następna</button>",
+      "</div>"
+    ]
+  },
+  "VIEW-09 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view09",
+      "view09j",
+      "VIEW-09"
+    ],
+    "description": "Bootstrap alert / badge / card – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <div className=\"alert alert-success\">Zapisano!</div>",
+      "  <span className=\"badge bg-primary me-1\">Nowość</span>",
+      "  <span className=\"badge bg-danger\">-20%</span>",
+      "  <div className=\"card mt-2\" style={{ width: '12rem' }}>",
+      "    <div className=\"card-body\">",
+      "      <h5 className=\"card-title\">Tytuł karty</h5>",
+      "      <p className=\"card-text\">Treść karty.</p>",
+      "    </div>",
+      "  </div>",
+      "</div>"
+    ]
+  },
+  "VIEW-10 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view10",
+      "VIEW-10"
+    ],
+    "description": "text from template string with variables + special chars ({' '}, &gt;) – LOGIC (above return)",
+    "body": [
+      "// VIEW-10 text from template string with variables + special chars ({' '}, &gt;)",
+      "const tytul = 'Vinci';",
+      "const rodzaj = 1;"
+    ]
+  },
+  "VIEW-10 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view10j"
+    ],
+    "description": "text from template string with variables + special chars ({' '}, &gt;) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <p>{`tytul: \\${tytul}; rodzaj: \\${rodzaj}`}</p>",
+      "  <p>Adres:{' '}<b>{tytul}</b> &gt; 0 &amp; &copy;</p>",
+      "</div>"
+    ]
+  },
+  "VIEW-11 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view11",
+      "VIEW-11"
+    ],
+    "description": "show / hide with hidden attribute or d-none (element stays in DOM) – LOGIC (above return) | needs useState",
+    "body": [
+      "// VIEW-11 show / hide with hidden attribute or d-none (element stays in DOM)",
+      "const [ukryty, setUkryty] = useState(false);"
+    ]
+  },
+  "VIEW-11 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view11j"
+    ],
+    "description": "show / hide with hidden attribute or d-none (element stays in DOM) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <p className={ukryty ? 'd-none' : ''}>Ukrywany przez d-none</p>",
+      "  <p hidden={ukryty}>Ukrywany przez hidden</p>",
+      "  <button type=\"button\" className=\"btn btn-secondary\" onClick={() => setUkryty(!ukryty)}>Przełącz</button>",
+      "</div>"
+    ]
+  },
+  "VIEW-12 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view12",
+      "view12j",
+      "VIEW-12"
+    ],
+    "description": "Fragment <>...</> (return several elements without extra div) – JSX (inside return)",
+    "body": [
+      "<>",
+      "  <h5>Nagłówek</h5>",
+      "  <p>Akapit obok, bez dodatkowego diva.</p>",
+      "</>"
+    ]
+  },
+  "VIEW-13 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view13",
+      "VIEW-13"
+    ],
+    "description": "progress bar from a number (width in %) – LOGIC (above return) | needs useState",
+    "body": [
+      "// VIEW-13 progress bar from a number (width in %)",
+      "const [procent, setProcent] = useState(40);"
+    ]
+  },
+  "VIEW-13 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "view13j"
+    ],
+    "description": "progress bar from a number (width in %) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <div className=\"progress mb-2\">",
+      "    <div className=\"progress-bar\" style={{ width: procent + '%' }}>{procent}%</div>",
+      "  </div>",
+      "  <button type=\"button\" className=\"btn btn-sm btn-primary\" onClick={() => setProcent(Math.min(100, procent + 10))}>+10%</button>",
+      "</div>"
+    ]
+  },
+  "EFF-01 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff01",
+      "EFF-01"
+    ],
+    "description": "run once at start (empty deps []) – LOGIC (above return) | needs useEffect",
+    "body": [
+      "// EFF-01 run once at start (empty deps [])",
+      "const [start, setStart] = useState('');",
+      "",
+      "useEffect(() => {",
+      "  setStart(new Date().toLocaleTimeString());",
+      "  console.log('komponent uruchomiony');",
+      "}, []);"
+    ]
+  },
+  "EFF-01 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff01j"
+    ],
+    "description": "run once at start (empty deps []) – JSX (inside return)",
+    "body": [
+      "<p>Start o: {start}</p>"
+    ]
+  },
+  "EFF-02 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff02",
+      "EFF-02"
+    ],
+    "description": "run when a value changes (deps [x]) - e.g. log every change – LOGIC (above return) | needs useState, useEffect",
+    "body": [
+      "// EFF-02 run when a value changes (deps [x]) - e.g. log every change",
+      "const [licznik, setLicznik] = useState(0);",
+      "",
+      "useEffect(() => {",
+      "  console.log(`Kliknięto \\${licznik} razy`);",
+      "  // RISKY AT THE EXAM: document.title = ... touches the DOM directly.",
+      "  // The keys give 0 points for \"metody DOM\", so skip it unless the sheet asks for it.",
+      "}, [licznik]);"
+    ]
+  },
+  "EFF-02 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff02j"
+    ],
+    "description": "run when a value changes (deps [x]) - e.g. log every change – JSX (inside return)",
+    "body": [
+      "<button type=\"button\" className=\"btn btn-primary\" onClick={() => setLicznik(licznik + 1)}>Kliknij ({licznik})</button>"
+    ]
+  },
+  "EFF-03 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff03",
+      "EFF-03"
+    ],
+    "description": "clock: setInterval every second + clearInterval cleanup – LOGIC (above return) | needs useState, useEffect",
+    "body": [
+      "// EFF-03 clock: setInterval every second + clearInterval cleanup",
+      "const [czas, setCzas] = useState(new Date());",
+      "",
+      "useEffect(() => {",
+      "  const id = setInterval(() => setCzas(new Date()), 1000);",
+      "  return () => clearInterval(id);",
+      "}, []);"
+    ]
+  },
+  "EFF-03 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff03j"
+    ],
+    "description": "clock: setInterval every second + clearInterval cleanup – JSX (inside return)",
+    "body": [
+      "<h4>{czas.toLocaleTimeString('pl-PL')}</h4>"
+    ]
+  },
+  "EFF-04 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff04",
+      "EFF-04"
+    ],
+    "description": "countdown with start / stop / reset (one setTimeout per second) – LOGIC (above return) | needs useState, useEffect",
+    "body": [
+      "// EFF-04 countdown with start / stop / reset (one setTimeout per second)",
+      "const [sekundy, setSekundy] = useState(10);",
+      "const [dziala, setDziala] = useState(false);",
+      "",
+      "useEffect(() => {",
+      "  if (!dziala || sekundy === 0) {",
+      "    return;                        // stopped, or finished at 0",
+      "  }",
+      "  const id = setTimeout(() => setSekundy(sekundy - 1), 1000);",
+      "  return () => clearTimeout(id);",
+      "}, [dziala, sekundy]);             // runs again after every tick"
+    ]
+  },
+  "EFF-04 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff04j"
+    ],
+    "description": "countdown with start / stop / reset (one setTimeout per second) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <h4>{sekundy} s</h4>",
+      "  {sekundy === 0 && <p className=\"text-danger\">Koniec czasu!</p>}",
+      "  <button type=\"button\" className=\"btn btn-success me-1\" onClick={() => setDziala(true)}>Start</button>",
+      "  <button type=\"button\" className=\"btn btn-warning me-1\" onClick={() => setDziala(false)}>Stop</button>",
+      "  <button type=\"button\" className=\"btn btn-secondary\" onClick={() => { setDziala(false); setSekundy(10); }}>Reset</button>",
+      "</div>"
+    ]
+  },
+  "EFF-05 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff05",
+      "EFF-05"
+    ],
+    "description": "setTimeout: message that disappears after 2 s – LOGIC (above return) | needs useState, useEffect",
+    "body": [
+      "// EFF-05 setTimeout: message that disappears after 2 s",
+      "const [komunikat, setKomunikat] = useState('');",
+      "",
+      "useEffect(() => {",
+      "  if (komunikat === '') {",
+      "    return;",
+      "  }",
+      "  const id = setTimeout(() => setKomunikat(''), 2000);",
+      "  return () => clearTimeout(id);",
+      "}, [komunikat]);"
+    ]
+  },
+  "EFF-05 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff05j"
+    ],
+    "description": "setTimeout: message that disappears after 2 s – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <button type=\"button\" className=\"btn btn-primary\" onClick={() => setKomunikat('Zapisano!')}>Zapisz</button>",
+      "  {komunikat && <div className=\"alert alert-success mt-2\">{komunikat}</div>}",
+      "</div>"
+    ]
+  },
+  "EFF-06 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff06",
+      "EFF-06"
+    ],
+    "description": "localStorage: load at start (lazy init) + save on change – LOGIC (above return) | needs useState, useEffect",
+    "body": [
+      "// EFF-06 localStorage: load at start (lazy init) + save on change",
+      "const [notatka, setNotatka] = useState(() => localStorage.getItem('notatka') || '');",
+      "",
+      "useEffect(() => {",
+      "  localStorage.setItem('notatka', notatka);",
+      "}, [notatka]);"
+    ]
+  },
+  "EFF-06 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff06j"
+    ],
+    "description": "localStorage: load at start (lazy init) + save on change – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group\">",
+      "  <label htmlFor=\"notatka\">Notatka (zostaje po F5):</label>",
+      "  <input type=\"text\" className=\"form-control\" id=\"notatka\" value={notatka} onChange={(e) => setNotatka(e.target.value)} />",
+      "</div>"
+    ]
+  },
+  "EFF-07 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff07",
+      "EFF-07"
+    ],
+    "description": "localStorage with an array (JSON.stringify / JSON.parse) – LOGIC (above return) | needs useState, useEffect",
+    "body": [
+      "// EFF-07 localStorage with an array (JSON.stringify / JSON.parse)",
+      "const [lista, setLista] = useState(() => JSON.parse(localStorage.getItem('lista') || '[]'));",
+      "",
+      "useEffect(() => {",
+      "  localStorage.setItem('lista', JSON.stringify(lista));",
+      "}, [lista]);"
+    ]
+  },
+  "EFF-07 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff07j"
+    ],
+    "description": "localStorage with an array (JSON.stringify / JSON.parse) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  <button type=\"button\" className=\"btn btn-primary me-1\" onClick={() => setLista([...lista, lista.length + 1])}>Dodaj</button>",
+      "  <button type=\"button\" className=\"btn btn-secondary\" onClick={() => setLista([])}>Wyczyść</button>",
+      "  <p>{lista.join(', ')}</p>",
+      "</div>"
+    ]
+  },
+  "EFF-08 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff08",
+      "EFF-08"
+    ],
+    "description": "fetch a JSON file from public/ at start (e.g. public/dane.json) – LOGIC (above return) | needs useState, useEffect",
+    "body": [
+      "// EFF-08 fetch a JSON file from public/ at start (e.g. public/dane.json)",
+      "const [dane, setDane] = useState(null);",
+      "const [blad, setBlad] = useState('');",
+      "",
+      "useEffect(() => {",
+      "  fetch('/dane.json')                       // file must be in egzamin/public/dane.json",
+      "    .then((res) => {",
+      "      if (!res.ok) {",
+      "        throw new Error('HTTP ' + res.status);",
+      "      }",
+      "      return res.json();",
+      "    })",
+      "    .then((json) => setDane(json))",
+      "    .catch((err) => setBlad('Nie udało się wczytać: ' + err.message));",
+      "}, []);",
+      "",
+      "// no early \"return\" here: pasted into App it would replace the WHOLE page"
+    ]
+  },
+  "EFF-08 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff08j"
+    ],
+    "description": "fetch a JSON file from public/ at start (e.g. public/dane.json) – JSX (inside return)",
+    "body": [
+      "<div>",
+      "  {blad !== '' && <p className=\"text-danger small\">{blad}</p>}",
+      "  {blad === '' && dane === null && <p>Wczytywanie...</p>}",
+      "  {dane !== null && <pre>{JSON.stringify(dane, null, 2)}</pre>}",
+      "</div>"
+    ]
+  },
+  "EFF-09 logic": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff09",
+      "EFF-09"
+    ],
+    "description": "keyboard the React way: onKeyDown on an input (e.g. Enter adds) – LOGIC (above return) | needs useState",
+    "body": [
+      "// EFF-09 keyboard the React way: onKeyDown on an input (e.g. Enter adds)",
+      "const [klawisz, setKlawisz] = useState('-');",
+      "const [tekst, setTekst] = useState('');",
+      "const [lista, setLista] = useState([]);",
+      "",
+      "function naKlawisz(e) {",
+      "  setKlawisz(e.key);",
+      "  if (e.key === 'Enter' && tekst.trim() !== '') {",
+      "    setLista([...lista, tekst]);",
+      "    setTekst('');",
+      "  }",
+      "}",
+      "// RISKY AT THE EXAM: window.addEventListener('keydown', ...) is a direct DOM API.",
+      "// The keys give 0 points for \"metody DOM\", so use onKeyDown={...} in JSX instead."
+    ]
+  },
+  "EFF-09 JSX": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "eff09j"
+    ],
+    "description": "keyboard the React way: onKeyDown on an input (e.g. Enter adds) – JSX (inside return)",
+    "body": [
+      "<div className=\"form-group\">",
+      "  <label htmlFor=\"wpis\">Wpisz i naciśnij Enter:</label>",
+      "  <input type=\"text\" className=\"form-control\" id=\"wpis\" value={tekst}",
+      "    onChange={(e) => setTekst(e.target.value)} onKeyDown={naKlawisz} />",
+      "  <p>Ostatni klawisz: <b>{klawisz}</b> · {lista.join(', ')}</p>",
+      "</div>"
+    ]
+  },
+  "JS-01": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js01",
+      "JS-01"
+    ],
+    "description": "random integer from min to max (both inclusive) (06_js_helpers.jsx)",
+    "body": [
+      "function losuj(min, max) {",
+      "  return Math.floor(Math.random() * (max - min + 1)) + min;",
+      "}"
+    ]
+  },
+  "JS-02": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js02",
+      "JS-02"
+    ],
+    "description": "random element of an array (06_js_helpers.jsx)",
+    "body": [
+      "function losowyElement(tablica) {",
+      "  return tablica[Math.floor(Math.random() * tablica.length)];",
+      "}"
+    ]
+  },
+  "JS-03": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js03",
+      "JS-03"
+    ],
+    "description": "shuffle array (Fisher-Yates, returns a NEW array) (06_js_helpers.jsx)",
+    "body": [
+      "function tasuj(tablica) {",
+      "  const kopia = [...tablica];",
+      "  for (let i = kopia.length - 1; i > 0; i--) {",
+      "    const j = Math.floor(Math.random() * (i + 1));",
+      "    [kopia[i], kopia[j]] = [kopia[j], kopia[i]];",
+      "  }",
+      "  return kopia;",
+      "}"
+    ]
+  },
+  "JS-04": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js04",
+      "JS-04"
+    ],
+    "description": "n different random numbers (lotto) (06_js_helpers.jsx)",
+    "body": [
+      "function losujBezPowtorzen(ile, min, max) {",
+      "  const wynik = [];",
+      "  while (wynik.length < ile) {",
+      "    const liczba = Math.floor(Math.random() * (max - min + 1)) + min;",
+      "    if (!wynik.includes(liczba)) {",
+      "      wynik.push(liczba);           // push is fine on a LOCAL array (not state)",
+      "    }",
+      "  }",
+      "  return wynik;",
+      "}"
+    ]
+  },
+  "JS-05": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js05",
+      "JS-05"
+    ],
+    "description": "password generator (letters, digits, special chars) (26.06 topic) (06_js_helpers.jsx)",
+    "body": [
+      "function generujHaslo(dlugosc, zCyframi, zeZnakami) {",
+      "  let znaki = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';",
+      "  if (zCyframi) {",
+      "    znaki += '0123456789';",
+      "  }",
+      "  if (zeZnakami) {",
+      "    znaki += '!@#\\$%^&*()_+-=';",
+      "  }",
+      "  let haslo = '';",
+      "  for (let i = 0; i < dlugosc; i++) {",
+      "    haslo += znaki[Math.floor(Math.random() * znaki.length)];",
+      "  }",
+      "  return haslo;",
+      "}"
+    ]
+  },
+  "JS-06": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js06",
+      "JS-06"
+    ],
+    "description": "number formatting: toFixed, toLocaleString, price in zł (06_js_helpers.jsx)",
+    "body": [
+      "function formatujCene(kwota) {",
+      "  return kwota.toFixed(2).replace('.', ',') + ' zł';",
+      "}"
+    ]
+  },
+  "JS-07": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js07",
+      "JS-07"
+    ],
+    "description": "number checks: empty / NaN / integer / range for input strings (06_js_helpers.jsx)",
+    "body": [
+      "function poprawnaLiczba(tekst, min, max) {",
+      "  if (tekst.trim() === '') {",
+      "    return false;",
+      "  }",
+      "  const n = Number(tekst);",
+      "  return Number.isInteger(n) && n >= min && n <= max;",
+      "}"
+    ]
+  },
+  "JS-08": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js08",
+      "JS-08"
+    ],
+    "description": "string basics: trim, case, includes, split, join, replace, slice, padStart (06_js_helpers.jsx)",
+    "body": [
+      "function inicjaly(imieNazwisko) {",
+      "  return imieNazwisko",
+      "    .trim()",
+      "    .split(' ')",
+      "    .filter((s) => s !== '')",
+      "    .map((s) => s[0].toUpperCase())",
+      "    .join('.');",
+      "}"
+    ]
+  },
+  "JS-09": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js09",
+      "JS-09"
+    ],
+    "description": "capitalize first letter / reverse / palindrome (06_js_helpers.jsx)",
+    "body": [
+      "function wielkaPierwsza(tekst) {",
+      "  return tekst.charAt(0).toUpperCase() + tekst.slice(1).toLowerCase();",
+      "}",
+      "",
+      "function odwroc(tekst) {",
+      "  return tekst.split('').reverse().join('');",
+      "}",
+      "",
+      "function czyPalindrom(tekst) {",
+      "  const czysty = tekst.toLowerCase().replaceAll(' ', '');",
+      "  return czysty === odwroc(czysty);",
+      "}"
+    ]
+  },
+  "JS-10": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js10",
+      "JS-10"
+    ],
+    "description": "count characters: vowels, digits, uppercase in a string (06_js_helpers.jsx)",
+    "body": [
+      "function policzZnaki(tekst) {",
+      "  let samogloski = 0;",
+      "  let cyfry = 0;",
+      "  let wielkie = 0;",
+      "  for (const znak of tekst) {",
+      "    if ('aeiouyąęóAEIOUYĄĘÓ'.includes(znak)) {",
+      "      samogloski++;",
+      "    }",
+      "    if (znak >= '0' && znak <= '9') {",
+      "      cyfry++;",
+      "    }",
+      "    if (znak !== znak.toLowerCase()) {",
+      "      wielkie++;",
+      "    }",
+      "  }",
+      "  return { samogloski, cyfry, wielkie };",
+      "}"
+    ]
+  },
+  "JS-11": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js11",
+      "JS-11"
+    ],
+    "description": "simple validators: email, password strength, postal code, PESEL length (06_js_helpers.jsx)",
+    "body": [
+      "function poprawnyEmail(email) {",
+      "  return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+\\$/.test(email);",
+      "}",
+      "",
+      "function silneHaslo(haslo) {",
+      "  return haslo.length >= 8 && /[A-Z]/.test(haslo) && /[a-z]/.test(haslo) && /[0-9]/.test(haslo);",
+      "}",
+      "",
+      "function poprawnyKodPocztowy(kod) {",
+      "  return /^\\d{2}-\\d{3}\\$/.test(kod);",
+      "}",
+      "",
+      "function poprawnyPeselFormat(pesel) {",
+      "  return /^\\d{11}\\$/.test(pesel);",
+      "}"
+    ]
+  },
+  "JS-12": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js12",
+      "JS-12"
+    ],
+    "description": "dates: today as RRRR-MM-DD, Polish format, days between two dates (06_js_helpers.jsx)",
+    "body": [
+      "function dzisiaj() {",
+      "  // LOCAL date (toISOString() is UTC -> yesterday's date just after midnight in Poland)",
+      "  const d = new Date();",
+      "  const miesiac = String(d.getMonth() + 1).padStart(2, '0');",
+      "  const dzien = String(d.getDate()).padStart(2, '0');",
+      "  return `\\${d.getFullYear()}-\\${miesiac}-\\${dzien}`;",
+      "}",
+      "",
+      "function dniMiedzy(data1, data2) {",
+      "  const ms = new Date(data2) - new Date(data1);",
+      "  return Math.round(ms / (1000 * 60 * 60 * 24));",
+      "}"
+    ]
+  },
+  "JS-13": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js13",
+      "JS-13"
+    ],
+    "description": "count occurrences in array -> object { value: count } (06_js_helpers.jsx)",
+    "body": [
+      "function policzWystapienia(tablica) {",
+      "  const wynik = {};",
+      "  for (const el of tablica) {",
+      "    wynik[el] = (wynik[el] || 0) + 1;",
+      "  }",
+      "  return wynik;",
+      "}"
+    ]
+  },
+  "JS-14": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js14",
+      "JS-14"
+    ],
+    "description": "math helpers: BMI, percent, even/odd, prime, factorial (06_js_helpers.jsx)",
+    "body": [
+      "function bmi(wagaKg, wzrostCm) {",
+      "  const m = wzrostCm / 100;",
+      "  return wagaKg / (m * m);",
+      "}",
+      "",
+      "function czyPierwsza(n) {",
+      "  if (n < 2) {",
+      "    return false;",
+      "  }",
+      "  for (let i = 2; i * i <= n; i++) {",
+      "    if (n % i === 0) {",
+      "      return false;",
+      "    }",
+      "  }",
+      "  return true;",
+      "}",
+      "",
+      "function silnia(n) {",
+      "  let wynik = 1;",
+      "  for (let i = 2; i <= n; i++) {",
+      "    wynik *= i;",
+      "  }",
+      "  return wynik;",
+      "}"
+    ]
+  },
+  "JS-15": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "js15",
+      "JS-15"
+    ],
+    "description": "copy data from dane.txt: object literal array (fix quotes / commas) (06_js_helpers.jsx)",
+    "body": [
+      "const zdjeciaZPliku = [",
+      "  // dane.txt objects pasted as-is; keys without quotes are fine in JS",
+      "  { id: 0, alt: 'Mak', filename: 'obraz1.jpg', category: 1, downloads: 35 },",
+      "  { id: 1, alt: 'Bratek', filename: 'obraz2.jpg', category: 1, downloads: 43 },",
+      "];"
+    ]
+  },
+  "COMP-01": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "comp01",
+      "COMP-01"
+    ],
+    "description": "child component with props (destructuring) (07_components_props.jsx)",
+    "body": [
+      "function Karta({ tytul, opis }) {",
+      "  return (",
+      "    <div className=\"card mb-2\">",
+      "      <div className=\"card-body\">",
+      "        <h5 className=\"card-title\">{tytul}</h5>",
+      "        <p className=\"card-text\">{opis}</p>",
+      "      </div>",
+      "    </div>",
+      "  );",
+      "}"
+    ]
+  },
+  "COMP-02": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "comp02",
+      "COMP-02"
+    ],
+    "description": "list of child components from an array (key on the component) (07_components_props.jsx)",
+    "body": [
+      "function Pozycja({ nazwa, cena }) {",
+      "  return <li className=\"list-group-item\">{nazwa} - {cena.toFixed(2)} zł</li>;",
+      "}"
+    ]
+  },
+  "COMP-03": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "comp03",
+      "COMP-03"
+    ],
+    "description": "callback prop: child tells parent (lifting state up) | needs useState (07_components_props.jsx)",
+    "body": [
+      "function PrzyciskLicznika({ etykieta, onKlik }) {",
+      "  return <button type=\"button\" className=\"btn btn-primary me-1\" onClick={onKlik}>{etykieta}</button>;",
+      "}"
+    ]
+  },
+  "COMP-04": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "comp04",
+      "COMP-04"
+    ],
+    "description": "children prop (wrapper component) (07_components_props.jsx)",
+    "body": [
+      "function Ramka({ naglowek, children }) {",
+      "  return (",
+      "    <div className=\"border rounded p-2 mb-2\">",
+      "      <strong>{naglowek}</strong>",
+      "      <div>{children}</div>",
+      "    </div>",
+      "  );",
+      "}"
+    ]
+  },
+  "COMP-05": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "comp05",
+      "COMP-05"
+    ],
+    "description": "default prop values + conditional render in child (07_components_props.jsx)",
+    "body": [
+      "function Powitanie({ imie = 'Gościu', vip = false }) {",
+      "  return <p>Witaj, {imie}! {vip && <span className=\"badge bg-warning text-dark\">VIP</span>}</p>;",
+      "}"
+    ]
+  },
+  "COMP-06": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "comp06",
+      "COMP-06"
+    ],
+    "description": "controlled input as child component (value + onChange from parent) | needs useState (07_components_props.jsx)",
+    "body": [
+      "function Pole({ id, etykieta, wartosc, onZmiana, typ = 'text' }) {",
+      "  return (",
+      "    <div className=\"form-group mb-2\">",
+      "      <label htmlFor={id}>{etykieta}</label>",
+      "      <input type={typ} className=\"form-control\" id={id} value={wartosc} onChange={(e) => onZmiana(e.target.value)} />",
+      "    </div>",
+      "  );",
+      "}"
+    ]
+  },
+  "INF04 App skeleton": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "inf04app"
+    ],
+    "description": "Whole App.jsx: imports, one component, form with onSubmit",
+    "body": [
+      "import { useState } from 'react';",
+      "import 'bootstrap/dist/css/bootstrap.css';",
+      "import './App.css';",
+      "",
+      "function App() {",
+      "  const [${1:pole}, set${1/(.*)/${1:/capitalize}/}] = useState('');",
+      "",
+      "  function ${2:zapisz}(e) {",
+      "    e.preventDefault();",
+      "    console.log($1);",
+      "  }",
+      "",
+      "  return (",
+      "    <div className=\"container\">",
+      "      <h1>${3:Tytuł}</h1>",
+      "      <form onSubmit={$2}>",
+      "        $0",
+      "      </form>",
+      "    </div>",
+      "  );",
+      "}",
+      "",
+      "export default App;"
+    ]
+  },
+  "INF04 form-group input": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "fg",
+      "formgroup"
+    ],
+    "description": "form-group + label htmlFor + controlled input (id = state name)",
+    "body": [
+      "<div className=\"form-group mb-3\">",
+      "  <label htmlFor=\"${1:pole}\">${2:Etykieta:}</label>",
+      "  <input",
+      "    type=\"${3|text,number,password,email,date|}\"",
+      "    className=\"form-control\"",
+      "    id=\"$1\"",
+      "    value={$1}",
+      "    onChange={(e) => set${1/(.*)/${1:/capitalize}/}(e.target.value)}",
+      "  />",
+      "</div>"
+    ]
+  },
+  "INF04 useState": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "us",
+      "usestate"
+    ],
+    "description": "const [x, setX] = useState() – setter filled automatically",
+    "body": [
+      "const [${1:stan}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:''});"
+    ]
+  },
+  "INF04 map li": {
+    "scope": "javascriptreact,javascript",
+    "prefix": [
+      "mapli"
+    ],
+    "description": "{tab.map(el => <li key>)}",
+    "body": [
+      "{${1:tablica}.map((${2:el}) => (",
+      "  <li key={$2}>{$2}</li>",
+      "))}"
+    ]
+  }
+}
